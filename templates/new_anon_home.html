@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>{% block title %} topout {% endblock %}</title>
+
+		<script type="text/javascript" src="/site_media/javascript/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="/site_media/javascript/signin.js"></script>
+
+		<meta name="description" content="An app to track your climbing."/>
+		<meta name="keywords" content="bouldering, climbing"/>
+
+		<link rel="stylesheet" type="text/css" href="/site_media/css/anon_home.css" />
+	</head>
+
+	<body>
+		<div id="home">
+			<div id="home-banner">
+				<div class="home-wrapper" id="top-wrapper">
+
+					<div id="topLeftPane">
+						<h1>the top out</h1>
+						<p>Send routes. Bask in glory.</p>
+					</div>
+					<div id="topRightPane">
+
+						<div id="home-sign-up">
+							<a href="/accounts/register/" id="sign-up"><button type="submit">Sign Up Now</button></a>
+						</div>
+
+						<div id="home-sign-in">
+							<form accept-charset="UTF-8" method="post" autocomplete="off" id="login-form" action="/accounts/login/">
+								{% csrf_token %}
+
+									<div class="input-wrapper">
+										<label for="id_username">Username</label>
+										<input id="id_username" size="30" type="text" name="username">
+									</div>
+								
+									<div class="input-wrapper">
+										<span>
+											<label for="id_password">Password</label>
+											<div class="clear"></div>
+										</span>
+										<input id="id_password" size="30" type="password" name="password">
+									</div>
+
+									<button type="submit" value="submit">Sign In</button>
+
+								</form>
+							</div>
+					</div>
+				</div>
+				</div>
+
+				<div class="home-wrapper" id="bottom-wrapper">
+					<div id="bottomLeftPane">
+
+						<div id="activity-heading">
+							RECENT ACTIVITY
+						</div>
+						
+						<div id="activity-items">
+							
+							{% for item in home_activity_list %}
+							<div class="activity-item">
+								<div class="item-image">
+									<a href="/"><img width="45" height="45" alt="Ian Whalen" src="/site_media/user_ian.jpg"></a>
+								</div>
+								<div class="item-content">
+									<p>
+									{{ item.climber.username }} sent a {{ item.route.difficulty }} route at 
+									<a href="{{ item.route.gym.get_absolute_url }}">{{ item.route.gym.gym_name }}</a>.
+									</p>
+								</div>
+								<div class="item-icon"></div>
+								<div class="clear"></div>
+							</div>
+							{% endfor %}
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</body>

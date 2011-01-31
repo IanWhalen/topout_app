@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div id="container"> 
+      <div style="height:358px" id="header"> 
+        <div id="tagline"> 
+          TopOut lets you track your progress and successes at your friendly local<br /> 
+          rock climbing gym.  Earn points &amp; unlock badges for sending routes.
+        </div> 
+        <img usemap="#hmap" width="948" height="358" src="/site_media/home_banner.png" /> 
+        <map id="hmap" name="hmap"> 
+          <area coords="19,0,330,129" shape="rect" href="/" /> 
+          <area coords="19,60,19" shape="circle" href="/" /> 
+        </map> 
+
+        {% if user.is_authenticated %}
+        <div id="login_nav">
+        Signed in as {{ user.username }}
+        (<a href="{% url auth_logout %}">Sign Out</a>  |
+        <a href="{% url auth_password_change %}">Change Password</a>)
+        </div>
+        {% else %}
+        <div id="login_nav"> 
+        Already a member? <a href="{% url auth_login %}">Sign In</a>
+        </div>
+        {% endif %}
+
+        <div id="join_now"> 
+		<a href={% url registration_register %}>
+            <img alt="JOIN NOW" width="232" height="57" class="rollover" src="/site_media/button_join_now_off.png" /> 
+          </a> 
+        </div> 
+      </div> 
+      <div id="body_out"> 
+        
+  
+  <div id="leftpane"> 
+    <div class="heading"> 
+      RECENTLY ADDED ROUTES
+    </div> 
+    <div id="items"> 
+      
+    {% for route in latest_route_list %}
+        <div style="display:block" id="1" class="item">
+            <div class="i_img"><a href=""><img width="45" height="45" src="http://playfoursquare.s3.amazonaws.com/userpix_thumbs/PEFGMDMU2ESS1OUD.jpg" alt=""/></a></div>
+            <div class="i_con"><div><a href="">Ian Whalen</a> at Brooklyn Boulders:</div><div>created a new {{ route.difficulty }} difficulty route.</div></div>
+            <div class="i_icn"><a href=""><img width"57" height="57" src="IMAGE SOURCE HERE" /></a></div>
+            <div style="clear:both"></div>
+        </div>
+    {% endfor %}
+      
+    </div> 
+  </div> 
+  <div id="rightpane"> 
+    <div> 
+      <div class="heading"> 
+        HOTTEST ROCK GYMS
+      </div> 
+      <div class="heading"> 
+        <a href="/gyms/bkb"><img alt="Brooklyn Boulders" width="243" height="121" src="/site_media/brooklyn_boulders_logo.png" /></a> 
+      </div> 
+      <div class="heading"> 
+        <a href="/gyms/prg"><img alt="gym5" width="243" height="140" src="/site_media/philadelphia_rock_gyms_logo.png" /></a> 
+      </div> 
+    </div> 
+    <br /> 
+    <div class="heading"> 
+      What is foursquare?
+    </div> 
+    <div style="margin: 10px 0px 0px 0px"> 
+      <a rel="facebox" href="#demoVideo"><img src="/img/videothumbnail.png" /></a> 
+    </div> 
+    <div style="border-bottom:1px dotted #AAAAAA;margin-bottom:20px;margin-top:-10px;" class="heading"> </div> 
+    <br /> 
+    <div> 
+      <a href="/businesses/"> 
+        <img alt="Use Foursquare For Your Business" width="240" height="85" class="rollover" src="/img/business_off.png" /> 
+      </a> 
+    </div> 
+    <br /> 
+    <div> 
+      <div style="margin-bottom:10px" class="heading"> 
+        FIND US ON
+      </div> 
+      <a target="_new" href="http://twitter.com/foursquare"> 
+        <img alt="twitter" src="/img/twitterIcon.png" /> 
+      </a> 
+      <a target="_new" href="http://www.facebook.com/playfoursquare"> 
+        <img alt="facebook" src="/img/facebookIcon.png" /> 
+      </a> 
+      <a target="_new" href="http://foursquare.tumblr.com"> 
+        <img alt="tumblr" src="/img/tumblrIcon.png" /> 
+      </a> 
+      <a target="_new" href="http://www.flickr.com/groups/4sq/"> 
+        <img alt="flickr" src="/img/flickrIcon.png" /> 
+      </a> 
+      <a target="_new" href="http://meetup.com/foursquare"> 
+        <img alt="Meetup" src="/img/meetupIcon.png" /> 
+      </a> 
+    </div> 
+  </div> 
+  
+  <div style="text-align:center;font-   size:9px;display:none" class="embedded-howcast-video" id="demoVideo"> 
+    <object id="howcastplayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" height="348" width="560"> 
+    <param value="http://www.howcast.com/flash/howcast_player.swf?file=386406&amp;theme=black&amp;no_rel=true" name="movie" /><param value="true" name="allowFullScreen" /><param value="always" name="allowScriptAccess" /><param value="autoplay=true&amp;&amp;fs=true" name="flashVars" /> 
+    <embed flashVars="autoplay=true&amp;&amp;fs=true" allowScriptAccess="always" allowFullScreen="true" height="348" width="560" type="application/x-shockwave-flash" src="http://www.howcast.com/flash/howcast_player.swf?file=386406&amp;theme=black&amp;no_rel=true"></embed> 
+    </object></div> 
+ 
+      </div> 
+
+{% endblock %}
+
+{% block footer %}
+
+<div style="clear:both" id="footer"> 
+  <div class="links"> 
+    <div class="outsideContainer"> 
+      <ul> 
+        <li><a href="/about">about</a></li> 
+        <li><a href="http://blog.ianwhalen.com">blog</a></li> 
+        <li><a href="/help">help</a></li> 
+        <li><a href="/contact">contact</a></li> 
+        <li><a href="/legal/terms">terms</a></li> 
+      </ul> 
+    </div> 
+  </div> 
+  
+</div> 
+
+{% endblock %}

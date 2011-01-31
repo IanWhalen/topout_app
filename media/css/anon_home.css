@@ -1,0 +1,218 @@
+body {
+color: #5A5858;
+font-family: Helvetica, Verdana, Arial, sans-serif;
+font-size: 13px;
+margin: 0px;
+}
+
+div {
+display: block;	
+margin: 0px;
+padding: 0px;
+}
+
+img {
+border: 0px;
+}
+
+div#container {
+margin-left: auto;
+margin-right: auto;
+position: relative;
+width: 948px;	
+}
+
+div#body {
+background-color: white;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+clear: both;
+left: 24px;
+padding: 20px 20px 10px;
+position: relative;
+top: 0px;
+width: 860px;
+}
+
+body #home {
+margin-top: 0px;
+}
+
+body #home-banner {
+background: black url(/site_media/anon_home_banner_1.png) no-repeat 50% 0%;
+height: 400px;
+margin-right: 0px;
+}
+
+body #top-wrapper {
+margin: 0px auto;
+width: 820px;
+height: 400px;
+}
+
+body #bottom-wrapper {
+margin: 0px auto;
+width: 820px;
+}
+
+body .home-wrapper h1 {
+font-size: 4.5em;
+color: #86C543;
+margin: 0.1em 0px;
+}
+
+body .home-wrapper p {
+display: block;
+margin: 0.25em 0px;
+color: #EDEAE3;
+}
+
+body .home-wrapper#login-wrapper {
+padding-top: 60px;
+}
+
+/* START FULL-PAGE STYLING */
+
+div #bottomLeftPane {
+background-color: white;
+float: left;
+padding: 10px 15px 0px 0px;
+width: 545px;
+}
+
+div#topLeftPane {
+float: left;
+padding: 120px 15px 0px 0px;
+width: 545px;
+}
+
+div#topRightPane {
+float: left;
+padding: 10px 15px 0px 0px;
+width: 245px;
+}
+
+div .clear {
+clear: both;
+}
+
+a:link, a:visited {
+color: #474747;
+font-weight: bold;
+text-decoration: none;
+}
+
+/* END FULL-PAGE STYLING */
+
+/* START SIGN-IN/SIGN-UP BOX STYLING */
+
+body #home-sign-up {
+text-align: right;
+margin-top: 20px;
+width: 190px;
+}
+
+body #home-sign-in {
+padding-top: 220px;
+}
+
+form .input-wrapper {
+border-width: 0px;
+float: left;
+height: 45px;
+position: relative;
+width: 210px;
+}
+
+form .input-wrapper label {
+color: #869CB2;
+font-size: 12px;
+height: 40px;
+left: 0px;
+line-height: 40px;
+margin: -2px 0px 0px 11px;
+position: absolute;
+top: 0px;
+width: 176px;
+z-index: 1;
+}
+
+form .input-wrapper input {
+border: 1px solid #C2C2C2;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+font-size: 12px;
+padding: 8px;
+width: 200px;
+}
+
+body button {
+float: left;
+border-radius: 4px;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+cursor: pointer;
+padding: 10px 15px;
+}
+
+div#home-sign-in button {
+border: 1px solid #8C8C8C;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(#8C8C8C));
+background: -moz-linear-gradient(center top , #BDBDBD 0%, #8C8C8C 100%) repeat scroll 0 0 transparent;
+color: black;
+font-size: 14px;
+width: 100px;
+}
+
+div#home-sign-up button {
+border: 1px solid #86C543;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#88B858), to(#609030));
+background: -moz-linear-gradient(center top , #88B858 0%, #609030 100%) repeat scroll 0 0 transparent;
+color: white;
+font-size: 20px;
+font-weight: bold;
+width: 200px;
+}
+
+/* END SIGN-IN/SIGN-UP BOX STYLING */
+
+/* START ACTIVITY FEED STYLING */
+
+div #activity-heading {
+border-bottom: 1px solid black;
+font-size: 14px;
+font-weight: bold;
+padding: 10px 0px 3px;
+}
+
+div .activity-item {
+border-bottom: 1px solid black;
+clear: both;
+font-size: 14px;
+padding: 10px 10px 3px ;
+}
+
+div.item-image {
+float: left;
+margin-right: 10px;
+width: 51px;
+}
+
+div.item-image img {
+border: 1px solid #999;
+padding: 2px;
+}
+
+div.item-content {
+float: left;
+width: 391px;
+}
+
+div.item-content p {
+color: black;
+font-size: 16px;
+}
+
+/* END ACTIVITY FEED STYLING */
+

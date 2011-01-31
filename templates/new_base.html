@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+
+		<title>{% block title %} the top out {% endblock %}</title>
+
+		<meta name="description" content="A bouldering app to track your climbing."/>
+		<meta name="keywords" content="bouldering, climbing"/>
+
+    <link rel="stylesheet" type="text/css" href="/site_media/css/header.css"/>
+		{% block non_header_style %}
+    <link rel="stylesheet" type="text/css" href="/site_media/css/style.css"/>
+    {% endblock %}
+
+	</head>
+
+	<body>
+
+		<div id="header">
+			<div class="outsideContainer">
+				<ul id="topNav">
+					{% if user.is_authenticated %}
+					<li id="name">Ian Whalen</li>
+					<li>
+						<a href="">Help</a>
+					</li>
+					<li>
+						<a href="">Settings</a>
+					</li>
+					<li>
+					<a href="{% url auth_logout %}">Sign Out</a>
+					</li>
+					{% else %}
+					<li>
+					<a href="{% url auth_login %}">Sign in</a>
+					</li>	
+					<li>
+						<a href="">Help</a>
+					</li>
+					<li>
+						<a href="">Settings</a>
+					</li>
+					<li>
+					<a href="{% url registration_register %}">Sign Up</a>
+					</li>
+					{% endif %}
+				</ul>
+				<a href="/" id="logo">
+					<p>The Top Out</p>
+				</a>
+			</div>
+		</div>
+			
+		<div id="navbar">
+		</div>
+
+		{% block content %}{% endblock %}
+
+		<div id="footer">
+		</div>
+	</body>
+
+</html>

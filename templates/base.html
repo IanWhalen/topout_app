@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" /> 
+    <link rel="stylesheet" type="text/css" href="http://playfoursquare.s3.amazonaws.com/static/styles/foursquare-5d81ff06a79062760f539eb41e73287c.css" /> 
+    <meta name="Description" content="TopOut is a site to keep track of your bouldering exploits." />
+    <title>{% block title %}TopOut{% endblock %}</title>
+
+    <style type="text/css"> 
+      body {
+        background-color: #EEEEEE;
+      }
+      
+      #footer {
+ 
+      }
+ 
+      #footer .brands {
+        display:none;
+      }
+      
+      #footer .links {
+        background: none;
+      }
+      
+      #footer .links ul {
+        left: 0px;
+      }
+      
+      #footer .links ul li {
+        border-left:1px solid #AAAAAA;
+      }
+      
+      
+    </style>
+	
+<style type="text/css"> 
+      div#leftpane, div#rightpane {
+        height: 875px;
+      }
+      div#leftpane {
+        float: left;
+        width: 519px;
+        padding: 20px 49px 0 49px;
+        background-color: white;
+      }
+      div#rightpane {
+        float: right;
+        width: 243px;
+        padding: 20px 20px 0 20px;
+        font-size: 14px;
+        font-weight: bold;
+        background-image:url('/img/sidenav_bg.png');
+      }
+      div.heading {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 10px 0 3px 0;
+        border-bottom: 1px black dotted;
+      }
+      div.item {
+        clear: both;
+        font-size: 14px;
+        padding: 10px 0 3px 0;
+        border-bottom: 1px black dotted;
+      }
+      div.i_img {
+        float: left;
+        width: 51px;
+        margin-right: 10px;
+      }
+      div.i_img img {
+        padding: 2px;
+        border: 1px #999999 solid;
+      }
+      div.i_con {
+        float: left;
+        width: 391px;
+      }
+      div.i_icn {
+        float: left;
+        width: 57px;
+        margin-left: 10px;
+      }
+      
+      #header {
+        margin-left: 0px;
+        text-align: left;
+        width:948px;
+      }
+      
+    </style> 
+
+</head>
+
+<body>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+        <hr />
+        {% endblock %}
+    </div>
+</body>
+
+</html>

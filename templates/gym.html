@@ -1,0 +1,95 @@
+{% extends "new_base.html" %}
+
+{% block title %}the top out :: {{ g.gym_name }}{% endblock %}
+
+{% block content %}
+<div id="container">
+	<div id="body">
+		<div id="content">
+			<div id="gymPage" class="fullPage">
+
+				<div id="gymPageHeader">
+					<div class="leftColumn">
+						<div id="gymDetail">
+							<h2>{{ g.gym_name }}</h2>
+						</div>
+					</div>
+					<div class="rightColumn">
+						<div class="stats">
+							<ul>
+								<li style="width:75px">
+									YOUR CLIMBS
+									<strong>3</strong>
+								</li>
+								<li style="width:75px">
+									TOTAL CLIMBERS
+									<strong>205</strong>
+								</li>
+								<li style="width:90px;birder-right:none">
+									TOTAL LIVE ROUTES
+									<strong>80</strong>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>	
+
+				<div id="routesContainer" class="contentContainer">
+					<div class="header">
+						<p>All Routes</p>
+					</div>
+					<ul class="ManageList" id="RouteList">
+						{% for route in gym_list %}
+						<li>
+							<div class="Column1">
+								<div class="RouteColorImage">
+									{% if not route.secondary_color %}
+									<div style="background: {{ route.primary_color }}; height: 32px;"></div>
+									{% else %}
+									<div style="float: left; background: {{ route.primary_color }}; height: 32px; width: 50%;"></div>
+									<div style="float: left; background: {{ route.secondary_color }}; height: 32px; width: 50%;"></div>
+									{% endif %}
+								</div>
+								<h3>{{ route }}</h3>
+								<p>{{ route.wall }}</p>
+							</div>
+							<div class="Column2">
+								<h3><b>{{ route.difficulty }}</b></h3>
+							</div>
+							<div class="Column3">
+								<p>
+								Last climbed by:
+								<br>
+								Ian Whalen
+								</p>
+							</div>
+							<div class="Column4">
+								<span>
+
+								{% if user.is_authenticated %}
+									{% if route in climber_list %}
+									<p id="Done"><strong>Done!</strong></p>
+									{% else %}
+										<form action="/gyms/{{ g.gym_slug }}/routes/{{ route.id }}/complete/" method="post">
+											{% csrf_token %}
+											<input type="hidden" name="route_id" value="{{ route.id }}" />
+											<input type="submit" value="Mark As Done" class="newGreenButton" id="MarkRouteAsDone"/>
+										</form>
+									{% endif %}
+								{% else %}
+								<form action="{% url registration_register %}" method="link">
+									<input type="submit" value="Mark As Done" class="newGreenButton" id="MarkRouteAsDone"/>
+								</form>
+								{% endif %}
+								</span>
+							</div>
+							<div style="clear: both;"></div>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

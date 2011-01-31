@@ -1,0 +1,115 @@
+h3 {
+color: #888;
+font-size: 18px;
+font-weight: normal;
+line-height: 20pt;
+margin: 0px;
+}
+
+a:link, a:visited {
+color: #474747;
+font-weight: bold;
+text-decoration: none;
+}
+
+div#container {
+margin-left: auto;
+margin-right: auto;
+position: relative;
+width: 948px;	
+}
+
+.fullPage {
+float: left;
+}
+
+.leftColumn {
+float: left;
+margin-right: 20px;
+overflow: hidden;
+width: 555px;
+}
+
+.rightColumn {
+float: left;
+overflow: hidden;
+width: 285px;
+}
+
+.rightColumn #reasons {
+background-color: #F9F9F9;
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+margin-bottom: 13px;
+overflow: hidden;
+}
+
+#regOptionBox {
+background: #F9F9F9;
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+margin-bottom: 20px;
+padding: 19px;
+}
+
+h2 {
+color: #06C;
+font-size: 24px;
+font-weight: normal;
+margin: 0px;
+}
+
+.fullPage h2 {
+color: #444;
+font-size: 20px;
+font-weight: bold;
+}
+
+#regOptions h2 {
+font-size: 23px;
+}
+
+#body #content #registrationPage form {
+float: left;
+}
+
+#registrationPage form input {
+margin-bottom: 12px;
+}
+
+#registrationPage label, #home label {
+font-weight: bold;
+padding-bottom: 5px;
+float: left;
+font-size: 13px;
+}
+
+#registrationPage input[type="text"], #home input[type="text"] {
+border: 1px solid #C2C2C2;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+font-size: 18px;
+padding: 10px;
+width: 200px;
+}
+
+body #home {
+margin-top: 0px;
+}
+
+a#logo p {
+font-size: 40px;
+margin: 0px;
+}
+
+.regOption {
+float: left;
+}
