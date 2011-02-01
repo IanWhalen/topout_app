@@ -43,7 +43,6 @@ border-bottom-left-radius: 5px 5px;
 border-bottom-right-radius: 5px 5px;
 border-top-left-radius: 5px 5px;
 border-top-right-radius: 5px 5px;
-height: 413px;
 margin-bottom: 13px;
 overflow: hidden;
 }
@@ -150,4 +149,24 @@ font-size: 14px;
 width: 194px;
 height: 25px;
 line-height: 3px;
+}
+
+.centerColumn {
+float: left;
+overflow: hidden;
+width: 555px;
+margin-left: 155px;
+margin-right: 150px;
+}
+
+div#home-sign-in {
+background: #F9F9F9;
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+height: 375px;
+margin-bottom: 20px;
+padding: 19px;
 }

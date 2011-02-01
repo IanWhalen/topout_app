@@ -82,7 +82,7 @@ width: 545px;
 
 div#topLeftPane {
 float: left;
-padding: 120px 15px 0px 0px;
+padding: 100px 15px 0px 0px;
 width: 545px;
 }
 
@@ -108,12 +108,18 @@ text-decoration: none;
 
 body #home-sign-up {
 text-align: right;
-margin-top: 20px;
+margin-top: 310px;
 width: 190px;
 }
 
 body #home-sign-in {
-padding-top: 220px;
+color: white;
+padding-top: 0px;
+padding-left: 48px;
+}
+
+body #home-sign-in a {
+color: white;
 }
 
 form .input-wrapper {
@@ -124,29 +130,6 @@ position: relative;
 width: 210px;
 }
 
-form .input-wrapper label {
-color: #869CB2;
-font-size: 12px;
-height: 40px;
-left: 0px;
-line-height: 40px;
-margin: -2px 0px 0px 11px;
-position: absolute;
-top: 0px;
-width: 176px;
-z-index: 1;
-}
-
-form .input-wrapper input {
-border: 1px solid #C2C2C2;
-border-radius: 5px;
--moz-border-radius: 5px;
--webkit-border-radius: 5px;
-font-size: 12px;
-padding: 8px;
-width: 200px;
-}
-
 body button {
 float: left;
 border-radius: 4px;
@@ -154,15 +137,6 @@ border-radius: 4px;
 -webkit-border-radius: 4px;
 cursor: pointer;
 padding: 10px 15px;
-}
-
-div#home-sign-in button {
-border: 1px solid #8C8C8C;
-background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(#8C8C8C));
-background: -moz-linear-gradient(center top , #BDBDBD 0%, #8C8C8C 100%) repeat scroll 0 0 transparent;
-color: black;
-font-size: 14px;
-width: 100px;
 }
 
 div#home-sign-up button {

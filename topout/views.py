@@ -9,7 +9,7 @@ def home_view(request):
 
         c = {'home_activity_list': home_activity_list}
         c.update(csrf(request))
-        return render_to_response('new_anon_home.html', c)
+        return render_to_response('anon_home.html', c)
     else:
         user = request.user
         return render_to_response('user_home.html', {'user': user})

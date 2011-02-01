@@ -1,12 +1,11 @@
-{% extends "new_base.html" %}
+{% extends "base.html" %}
+{% load facebook_tags %}
 
 {% block title %} the top out :: signup {% endblock %}
 {% block non_header_style %}
 <link rel="stylesheet" type="text/css" href="/site_media/css/registration_form.css"/>
-{% endblock %}
-
-{% load facebook_tags %}
 {% facebook_js %}
+{% endblock %}
 
 {% block content %}
 <div id="container">
@@ -19,51 +18,49 @@
 
               <div class="regOption" id="facebookReg">
                 <h3>Sign up right now with your Facebook account:</h2>
-              {% facebook_button %}
+                <br/>
+                {% facebook_button %}
+                <br/>
               </div>
 
-              <div class="regOption" id="googleReg">
-                <h3>Sign up with your Google account:</h3>
+              <div class="clear"></div>
+              
+              <div class="regOptionSeperator">
+                <hr style="float: left;">
+                <p style="float: left;">OR</p>
+                <hr style="float: right;">
               </div>
 
+              <div class="clear"></div>
+              
               <div class="regOption" id="topoutReg">
+              <br/>
               <h3>Create your own account on the top out.</h3>
-              <form accept-charset="UTF-8" method="post" action=".">
+              <br/>
+              <form accept-charset="UTF-8" id="login-form" method="post" autocomplete="off" action=".">
               {% csrf_token %}
 
-              <div class="field_username">
-                <span>
-                  <label for="username">Username</label>
-                  <div class="clear"></div>
-                </span>
+              <div class="input-wrapper">
+                <label for="username">Username</label>
                 <input id="username" size="30" type="text">
               </div>
 
-<div class="field_email">
-<span>
-<label for="email">Email Address</label>
-<div class="clear"></div>
-</span>
-<input id="email" size="75" type="text">
-</div>
+              <div class="input-wrapper">
+                <label for="email">Email Address</label>
+                <input id="email" size="30" type="text">
+              </div>
 
-<div class="field_password1">
-<span>
-<label for="password1">Password</label>
-<div class="clear"></div>
-</span>
-<input id="password1" type="text">
-</div>
+              <div class="input-wrapper">
+                <label for="password1">Password</label>
+                <input id="password1" size="30" type="password">
+              </div>
 
-<div class="field_password2">
-<span>
-<label for="password2">Confirm Password</label>
-<div class="clear"></div>
-</span>
-<input id="password2" type="text">
-</div>
+              <div class="input-wrapper">
+                <label for="password2">Confirm Password</label>
+                <input id="password2" size="30" type="password">
+              </div>
 
-        <input type="submit" value="Submit" />
+        <button type="submit" value="submit"/>Create Account</button>
         <div class="clear"></div>
       </form>
     </div>

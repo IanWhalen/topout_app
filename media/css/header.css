@@ -80,6 +80,10 @@ padding-left: 7px;
 position: relative;
 }
 
+#header #topNav li:first-child a {
+border: none;
+}
+
 .outsideContainer {
 margin-left: auto;
 margin-right: auto;

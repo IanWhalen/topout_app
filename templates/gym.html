@@ -1,6 +1,10 @@
-{% extends "new_base.html" %}
+{% extends "base.html" %}
 
 {% block title %}the top out :: {{ g.gym_name }}{% endblock %}
+
+{% block non_header_style %}
+<link rel="stylesheet" type="text/css" href="/site_media/css/gym.css"/>
+{% endblock %}
 
 {% block content %}
 <div id="container">

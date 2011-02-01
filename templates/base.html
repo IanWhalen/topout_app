@@ -1,110 +1,65 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
 
-<head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type" /> 
-    <link rel="stylesheet" type="text/css" href="http://playfoursquare.s3.amazonaws.com/static/styles/foursquare-5d81ff06a79062760f539eb41e73287c.css" /> 
-    <meta name="Description" content="TopOut is a site to keep track of your bouldering exploits." />
-    <title>{% block title %}TopOut{% endblock %}</title>
+		<title>{% block title %} the top out {% endblock %}</title>
 
-    <style type="text/css"> 
-      body {
-        background-color: #EEEEEE;
-      }
-      
-      #footer {
- 
-      }
- 
-      #footer .brands {
-        display:none;
-      }
-      
-      #footer .links {
-        background: none;
-      }
-      
-      #footer .links ul {
-        left: 0px;
-      }
-      
-      #footer .links ul li {
-        border-left:1px solid #AAAAAA;
-      }
-      
-      
-    </style>
-	
-<style type="text/css"> 
-      div#leftpane, div#rightpane {
-        height: 875px;
-      }
-      div#leftpane {
-        float: left;
-        width: 519px;
-        padding: 20px 49px 0 49px;
-        background-color: white;
-      }
-      div#rightpane {
-        float: right;
-        width: 243px;
-        padding: 20px 20px 0 20px;
-        font-size: 14px;
-        font-weight: bold;
-        background-image:url('/img/sidenav_bg.png');
-      }
-      div.heading {
-        font-size: 14px;
-        font-weight: bold;
-        padding: 10px 0 3px 0;
-        border-bottom: 1px black dotted;
-      }
-      div.item {
-        clear: both;
-        font-size: 14px;
-        padding: 10px 0 3px 0;
-        border-bottom: 1px black dotted;
-      }
-      div.i_img {
-        float: left;
-        width: 51px;
-        margin-right: 10px;
-      }
-      div.i_img img {
-        padding: 2px;
-        border: 1px #999999 solid;
-      }
-      div.i_con {
-        float: left;
-        width: 391px;
-      }
-      div.i_icn {
-        float: left;
-        width: 57px;
-        margin-left: 10px;
-      }
-      
-      #header {
-        margin-left: 0px;
-        text-align: left;
-        width:948px;
-      }
-      
-    </style> 
+		<meta name="description" content="A bouldering app to track your climbing."/>
+		<meta name="keywords" content="bouldering, climbing"/>
 
-</head>
+    <link rel="stylesheet" type="text/css" href="/site_media/css/header.css"/>
+    <script type="text/javascript" src="/site_media/javascript/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="/site_media/javascript/signin.js"></script>
+		{% block non_header_style %}
+    <link rel="stylesheet" type="text/css" href="/site_media/css/style.css"/>
+    {% endblock %}
 
-<body>
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+	</head>
 
-    <div id="footer">
-        {% block footer %}
-        <hr />
-        {% endblock %}
-    </div>
-</body>
+	<body>
+
+		<div id="header">
+			<div class="outsideContainer">
+				<ul id="topNav">
+					{% if user.is_authenticated %}
+					<li id="name">Ian Whalen</li>
+					<li>
+						<a href="">Help</a>
+					</li>
+					<li>
+						<a href="">Settings</a>
+					</li>
+					<li>
+					<a href="{% url auth_logout %}">Sign Out</a>
+					</li>
+					{% else %}
+					<li>
+					<a href="{% url auth_login %}">Sign in</a>
+					</li>	
+					<li>
+						<a href="">Help</a>
+					</li>
+					<li>
+						<a href="">Settings</a>
+					</li>
+					<li>
+					<a href="{% url registration_register %}">Sign Up</a>
+					</li>
+					{% endif %}
+				</ul>
+				<a href="/" id="logo">
+					<p>The Top Out</p>
+				</a>
+			</div>
+		</div>
+			
+		<div id="navbar">
+		</div>
+
+		{% block content %}{% endblock %}
+
+		<div id="footer">
+		</div>
+	</body>
 
 </html>

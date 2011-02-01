@@ -24,5 +24,4 @@ urlpatterns = patterns('',
     url(r'^site_media/(?P<path>.*)$',
         'django.views.static.serve',
         {'document_root': settings.MEDIA_ROOT}),
-    # (r'^search/$', search_view),
 )
