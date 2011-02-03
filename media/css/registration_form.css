@@ -43,9 +43,10 @@ border-bottom-left-radius: 5px 5px;
 border-bottom-right-radius: 5px 5px;
 border-top-left-radius: 5px 5px;
 border-top-right-radius: 5px 5px;
-height: 413px;
+height: 383px;
 margin-bottom: 13px;
 overflow: hidden;
+padding: 15px;
 }
 
 #regOptionBox {
