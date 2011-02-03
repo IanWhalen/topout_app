@@ -50,14 +50,14 @@ class Gym(models.Model):
         pass
 
 class Wall(models.Model):
-    wall_name = models.CharField(max_length=20)
+    wall_name = models.CharField(max_length=50)
     gym = models.ForeignKey(Gym)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField(editable=False)
 
     def __unicode__(self):
         return u'%s' % (self.wall_name)
-    
+
     def save(self, *args, **kwargs):
         ''' On save, update time'''
         if not self.id:
