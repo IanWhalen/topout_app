@@ -49,18 +49,6 @@ img {
 border: 0px;
 }
 
-#navbar {
--webkit-text-stroke: 1px transparent;
--webkit-text-stroke-width: 1px;
--webkit-text-stroke-color: transparent;
-background-color: #86c543;
-border-bottom-width: 1px;
-border-bottom-style: solid;
-border-bottom-color: #86c543;
-font-weight: bold;
-height: 39px;
-}
-
 div#container {
 margin-left: auto;
 margin-right: auto;
