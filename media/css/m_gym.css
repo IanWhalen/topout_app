@@ -1,0 +1,570 @@
+body {
+color: #5A5858;
+font-family: Helvetica, Verdana, Arial, sans-serif;
+font-size: 13px;
+margin: 0px;
+}
+
+h3 {
+color: #888;
+font-size: 18px;
+font-weight: normal;
+line-height: 20pt;
+margin: 0px;
+}
+
+div {
+display: block;	
+margin: 0px;
+padding: 0px;
+}
+
+a:link {
+color: #474747;
+font-weight: bold;
+text-decoration: none;
+}
+
+a:visited {
+color: #474747;
+font-weight: bold;
+text-decoration: none;
+}
+
+img {
+border: 0px;
+}
+
+#navbar {
+-webkit-text-stroke: 1px transparent;
+-webkit-text-stroke-width: 1px;
+-webkit-text-stroke-color: transparent;
+background-color: #86c543;
+border-bottom-width: 1px;
+border-bottom-style: solid;
+border-bottom-color: #86c543;
+font-weight: bold;
+height: 39px;
+}
+
+div#container {
+margin-left: auto;
+margin-right: auto;
+position: relative;
+width: 948px;	
+}
+
+div#topNav {
+float: right;
+margin: 30px 0px 0px;
+padding: 0px;
+}
+
+#header ul#topNav {
+float: right;
+margin: 30px 0px 0px;
+padding: 0px;
+}
+
+#header ul#topNav li {
+color: #474747;
+float: left;
+font-size: 12px;
+font-weight: bold;
+list-style: none;
+margin: 0px;
+padding-right: 7px;
+}
+
+#header #topNav li a {
+border-left: 1px solid rgba(0, 0, 0, 0.199219);
+padding-left: 7px;
+}
+
+#header #topNav #name {
+position: relative;
+}
+
+.outsideContainer {
+margin-left: auto;
+margin-right: auto;
+position: relative;
+width: 865px;
+}
+
+div#body {
+background-color: white;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+clear: both;
+left: 24px;
+padding: 20px 20px 10px;
+position: relative;
+top: 0px;
+width: 860px;
+}
+
+.fullPage {
+float: left;
+}
+
+.fullPage .fullContainer {
+position: relative;
+}
+
+.fullPage .leftColumn {
+float: left;
+margin-right: 20px;
+overflow: hidden;
+width: 555px;
+}
+
+.fullPage .rightColumn {
+float: left;
+overflow: hidden;
+width: 285px;
+}
+
+#gymPage .stats {
+background-color: #F9F9F9;
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+margin-bottom: 13px;
+overflow: hidden;
+}
+
+.fullPage ul {
+margin: 0px;
+padding: 0px;
+}
+
+.fullPage li {
+list-style: none;
+}
+
+#gymPage .stats li {
+border-right: 1px dotted #CCC;
+float: left;
+font-size: 8.5px;
+margin: 10px 0px;
+padding: 0px 6px;
+text-align: center;
+}
+
+#gymPage .stats strong {
+color: #555;
+display: block;
+font-size: 24px;
+font-weight: bold;
+margin-top: 6px;
+}
+
+#gymPage .stats li:last-child {
+border-right: 0px;
+}
+
+#gymDetail {
+background: #F9F9F9;
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+margin-bottom: 20px;
+padding: 19px;
+}
+
+h2 {
+color: grey;
+font-size: 24px;
+font-weight: normal;
+margin: 0px;
+}
+
+.fullPage h2 {
+color: #444;
+font-size: 20px;
+font-weight: bold;
+}
+
+#gymDetail h2 {
+font-size: 23px;
+}
+
+.contentContainer .header {
+-webkit-text-stroke: 1px transparent;
+background: #CCCCCC;
+border-bottom: 1px solid rgba(0, 0, 0, 0.0976562);
+border-bottom-left-radius: 0px 0px;
+border-bottom-right-radius: 0px 0px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+font-weight: bold;
+height: 16px;
+margin-bottom: -1px !important;
+padding: 8px 10px;
+position: relative;
+z-index: 40;
+}
+
+.contentContainer .header p {
+color: black;
+font-size: 14px;
+margin: 2px 0px 0px 2px;
+padding: 0px;
+}
+
+#routesContainer {
+clear: both;
+}
+
+.fullPage .grayBox {
+background-color: #F9F9F9;
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+margin-bottom: 13px;
+overflow: hidden;
+padding: 10px;
+position: relative;
+}
+
+.boxContainer {
+border-bottom: 1px solid #D9D9D9;
+border-top: 1px solid white;
+padding: 8px 10px;
+}
+
+#routesContainer .boxContainer {
+line-height: 18px;
+min-height: 40px;
+overflow: hidden;
+}
+
+#routesContainer .boxContainer .routeColors {
+float: left;
+}
+
+.boxContainer div.RouteColorImage {
+background: white;
+border: 1px solid #D4D4D4;
+float: left;
+margin-right: 10px;
+padding: 4px;
+}
+
+#routesContainer .boxContainer .content {
+float: right;
+width: 755px;
+}
+
+div .content ul {
+margin: 0px;
+padding: 0px;
+list-style: none;
+}
+
+div .content li {
+display:inline-block;
+text-align:left;
+}
+
+ul.ManageList {
+list-style: none;
+margin: 0px;
+padding: 0px;
+}
+
+ul.ManageList li {
+-webkit-box-shadow: white 0px 1px 0px inset;
+background: #F9F8F6;
+border-top: 1px solid #D4D4D4;
+color: #555;
+min-height: 60px;
+}
+
+ul.ManageList li .Column1 {
+float: left;
+padding: 10px 0px;
+width: 60%;
+}
+
+ul.ManageList li .Column2 {
+float: left;
+padding: 10px 0px;
+width: 20%;
+}
+
+ul.ManageList li .Column4 {
+float: right;
+width: 20%;
+}
+
+#RouteList {
+background: #F9F8F6;
+border: 1px solid #D4D4D4;
+}
+
+#RouteList .Column4 {
+color: #AAA;
+position: relative;
+padding: 10px 0px 10px;
+}
+
+ul.ManageList li .Column1 h3 {
+color: #555;
+font-size: 13px;
+font-weight: bold;
+line-height: 25px;
+margin: 0px 0px 0px 60px;
+padding: 0px;
+}
+
+ul.ManageList li .Column1 div.RouteColorImage {
+margin-left: 10px;
+background: white;
+border: 1px solid #CCC;
+float: left;
+margin-right: 10px;
+padding: 3px;
+width: 32px;
+height: 32px;
+}
+
+ul.ManageList li .Column1 p {
+height: 12px;
+line-height: 12px;
+margin: 0px 0px 0px 60px;
+padding: 0px;
+}
+
+#RouteList .Column3 p {
+margin: 0px;
+}
+
+#RouteList .Column2 {
+padding: 17px 0px 17px;
+}
+
+#RouteList .Column3 {
+padding: 15px 0px;
+}
+
+#RouteList .Column4 span {
+float: right;
+margin-right: 20px;
+}
+
+#RouteList .Column4 span #Done {
+float: right;
+margin-right: 14px;
+}
+
+.newGreenButton {
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A7E300), to(#99D100));
+border: 1px solid #E6E6E6;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+color: #555;
+cursor: pointer;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-size: 11px;
+font-weight: bold;
+height: 30px;
+line-height: 30px;
+padding: 0px 10px;
+text-align: center;
+text-shadow: rgba(0, 0, 0, 0.0976562) 0px -1px 0px;
+text-transform: uppercase;
+background: #E6E6E6;
+}
+
+#MarkRouteAsDone {
+float: right;
+font-size: 16px;
+height: 40px;
+line-height: 40px;
+margin: 0px;
+text-decoration: none;
+text-transform: capitalize;
+}
+
+#body #content #registrationPage form {
+float: left;
+}
+
+#registrationPage form input {
+width: 400px;
+margin-bottom: 12px;
+}
+
+#registrationPage label, #home label {
+font-weight: bold;
+padding-bottom: 5px;
+float: left;
+font-size: 13px;
+}
+
+div .clear {
+clear: both;
+}
+
+#registrationPage input[type="text"], #home input[type="text"] {
+border: 1px solid #C2C2C2;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+font-size: 18px;
+padding: 10px;
+width: 200px;
+}
+
+body #home {
+margin-top: 0px;
+}
+
+body #home-banner {
+background: black url(/site_media/anon_home_banner_1.png) no-repeat 50% 0%;
+height: 400px;
+margin-right: 0px;
+}
+
+body .home-wrapper#top-wrapper {
+margin: 0px auto;
+width: 820px;
+height: 400px;
+}
+
+body .home-wrapper#bottom-wrapper {
+margin: 0px auto;
+padding-top: 45px;
+width: 820px;
+}
+
+body .home-wrapper h1 {
+font-size: 4.5em;
+color: #86C543;
+margin: 0.1em 0px;
+}
+
+body .home-wrapper p {
+display: block;
+margin: 0.25em 0px;
+color: #EDEAE3;
+}
+
+body .home-wrapper #home-sign-up {
+text-align: right;
+margin-top: 20px;
+width: 190px;
+}
+
+body #home-sign-up a#sign-up {
+background: url(http://www.path.com/images/home/sign-up.png) no-repeat 0% 0%;
+color: #202020;
+display: block;
+font-size: 2.2em;
+font-weight: bold;
+height: 28px;
+padding: 15px 0px 15px 17px;
+text-align: left;
+text-shadow: white 0px 1px 0px;
+}
+
+body .home-wrapper#login-wrapper {
+padding-top: 60px;
+}
+
+body #home-sign-in {
+padding-top: 100px;
+}
+
+body #auth-row button {
+float: left;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#88B858), to(#609030));
+border: 1px solid #86C543;
+border-bottom-left-radius: 4px 4px;
+border-bottom-right-radius: 4px 4px;
+border-top-left-radius: 4px 4px;
+border-top-right-radius: 4px 4px;
+color: white;
+cursor: pointer;
+font-size: 18px;
+font-weight: bold;
+padding: 10px 15px;
+}
+
+form#login-form div#auth-row div.field_username {
+padding-bottom: 10px;
+}
+
+form#login-form div#auth-row div.field_password {
+padding-bottom: 14px;
+}
+
+div #bottomLeftPane {
+background-color: white;
+float: left;
+padding: 10px 15px 0px 0px;
+width: 545px;
+}
+
+div #activity-heading {
+border-bottom: 1px solid black;
+font-size: 14px;
+font-weight: bold;
+padding: 10px 0px 3px;
+}
+
+div .activity-item {
+border-bottom: 1px solid black;
+clear: both;
+font-size: 14px;
+padding: 10px 0px 3px;
+}
+
+div.item-image {
+float: left;
+margin-right: 10px;
+width: 51px;
+}
+
+div.item-image img {
+border: 1px solid #999;
+padding: 2px;
+}
+
+div.item-content {
+float: left;
+width: 391px;
+}
+
+div.item-content p {
+color: black;
+font-size: 16px;
+}
+
+a#logo p {
+font-size: 40px;
+margin: 0px;
+}
+
+div#topLeftPane {
+float: left;
+padding: 260px 15px 0px 0px;
+width: 545px;
+}
+
+div#topRightPane {
+float: left;
+padding: 10px 15px 0px 0px;
+width: 245px;
+}

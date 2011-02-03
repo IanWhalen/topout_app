@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>{% block title %} the top out {% endblock %}</title>
+
+		<meta name="description" content="An app to track your climbing."/>
+		<meta name="keywords" content="bouldering, climbing"/>
+
+    {% load facebook_tags %}    
+    {% facebook_js %}
+	</head>
+
+	<body>
+		<div id="content">
+      Hi {{ user }},
+      <p>
+      {% if last_route %}
+      The last route you climbed was a {{ last_route.difficulty }}
+      at <a href="{{ last_route.gym.get_absolute_url }}">{{ last_route.gym.gym_name }}</a>
+      {% else %}
+      Doesn't look like you've climbed any routes.
+      Maybe check you want to climb at <a href="/gyms/brooklyn-boulders/">Brooklyn Boulders</a>?
+      {% endif %}
+      </p>
+    </div>
+    <div id="footer">
+    <hr>
+    <a href="{% url auth_logout %}">Log Out</a>
+    </div>
+  </body>
