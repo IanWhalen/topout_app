@@ -16,15 +16,19 @@
 <div id="regPageHeader">
 <div class="centerColumn">
   <div id="home-sign-in">
-
+    <div class="signInOption">
     {% facebook_button %}
+    <br/>
+    </div>
 
     <div class="regOptionSeperator">
       <hr style="float: left;">
       <p style="float: left;">OR</p>
       <hr style="float: right;">
     </div>
-
+    
+    <div class="signInOption">
+    <br/>
     <form accept-charset="UTF-8" method="post" autocomplete="off" id="login-form" action="/accounts/login/">
       {% csrf_token %}
 
@@ -42,11 +46,12 @@
         </div>
 
         <button type="submit" value="submit">Sign In</button>
-
+        <div class="clear"></div>
       </form>
-
-    <p>Forgot password? <a href="{% url auth_password_reset %}">Reset it</a>!</p>
-    <p>Not a member? <a href="{% url registration_register %}">Register</a>!</p>
+    <div>
+    <p>Forgot your password? <a href="{% url auth_password_reset %}">Reset it</a>!</p>
+    <p>Not a member? <a href="{% url registration_register %}">Sign up</a>!</p>
+    </div>
     </div>
 </div>
 </div>

@@ -85,7 +85,7 @@ font-size: 40px;
 margin: 0px;
 }
 
-.regOption {
+.signInOption {
 float: left;
 margin: 0px;
 padding: 0px;
@@ -140,7 +140,7 @@ float: left;
 padding: 10px 15px;
 }
 
-div.regOption button {
+div.signInOption button {
 background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(#8C8C8C));
 background: -moz-linear-gradient( center top , #BDBDBD 0% , #8C8C8C 100% ) repeat scroll 0 0 transparent;
 border: 1px solid #8C8C8C;
