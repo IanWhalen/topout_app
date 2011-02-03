@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
 from datetime import datetime
 
 COLOR_CHOICES=(('#FFFFFF','White'),('#800080','Purple'),('#FF4500','Orange'),
@@ -14,8 +14,8 @@ DIFFICULTY_CHOICES = (('V0-', 'V0-'), ('V0', 'V0'), ('V0+', 'V0+'),
                       ('V3-', 'V3-'), ('V3', 'V3'), ('V3+', 'V3+'),
                       ('V4-', 'V4-'), ('V4', 'V4'), ('V4+', 'V4+'),
                       ('V5-', 'V5-'), ('V5', 'V5'), ('V5+', 'V5+'),
-                      ('V6-', 'V6-'), ('V6', 'V6'), ('V6+', 'V6+'), 
-                      ('V7-', 'V7-'), ('V7', 'V7'), ('V7+', 'V7+'), 
+                      ('V6-', 'V6-'), ('V6', 'V6'), ('V6+', 'V6+'),
+                      ('V7-', 'V7-'), ('V7', 'V7'), ('V7+', 'V7+'),
                       ('V8-', 'V8-'), ('V8', 'V8'), ('V8+', 'V8+'),
                       ('V9-', 'V9-'), ('V9', 'V9'), ('V9+', 'V9+'),
                       ('V10-', 'V10-'), ('V10', 'V10'), ('V10+', 'V10+'),

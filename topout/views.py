@@ -41,7 +41,7 @@ def gym_view(request, gym_slug):
     c = {}
     c.update(csrf(request))
 
-    if True:
+    if mobileBrowser(request):
         return render_to_response('m/m_gym.html', data, \
                                   context_instance=RequestContext(request))
     else:
