@@ -17,7 +17,7 @@
             <div id="regOptionBox">
 
               <div class="regOption" id="facebookReg">
-                <h3>Sign up right now with your Facebook account:</h2>
+                <h3>Sign up with your Facebook account:</h2>
                 <br/>
                 {% facebook_button %}
                 <br/>
@@ -29,6 +29,7 @@
                 <hr style="float: left;">
                 <p style="float: left;">OR</p>
                 <hr style="float: right;">
+                <div class="clear"></div>
               </div>
 
               <div class="clear"></div>
@@ -42,22 +43,22 @@
 
               <div class="input-wrapper">
                 <label for="username">Username</label>
-                <input id="username" size="30" type="text">
+                <input id="username" size="30" type="text" name="username">
               </div>
 
               <div class="input-wrapper">
                 <label for="email">Email Address</label>
-                <input id="email" size="30" type="text">
+                <input id="email" size="30" type="text" name="email">
               </div>
 
               <div class="input-wrapper">
                 <label for="password1">Password</label>
-                <input id="password1" size="30" type="password">
+                <input id="password1" size="30" type="password" name="password1">
               </div>
 
               <div class="input-wrapper">
                 <label for="password2">Confirm Password</label>
-                <input id="password2" size="30" type="password">
+                <input id="password2" size="30" type="password" name="password2">
               </div>
 
         <button type="submit" value="submit"/>Create Account</button>
