@@ -1,4 +1,5 @@
 from models import *
+from django.http import Http404
 
 mobiles_uas = [
     'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
