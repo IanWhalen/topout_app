@@ -1,6 +1,49 @@
 from models import *
 from django.http import Http404
 
+
+#####################################################
+#                                                   #
+#            Primary Context Generators             #
+#                                                   #
+#####################################################
+
+def get_context_for_mobile_user_home(request):
+    last_route = get_last_route_for_user(request)
+    c = {'user': request.user, 'last_route': last_route}
+    return c
+
+def get_context_for_anon_home():
+    route_list = Completed_Route.objects.order_by('created')[0:10]
+    return route_list
+
+def get_context_for_user_home(request):
+    last_route = get_last_route_for_user(request.user)
+    c = {'user': request.user, 'last_route': last_route}
+    return c
+
+def get_context_for_gym_page(request, gym_slug):
+    try:
+        g = Gym.objects.get(gym_slug=gym_slug)
+    except Gym.DoesNotExist:
+        raise Http404
+
+    try:
+        gym_list, climber_list = create_route_lists(request.user, g)
+    except:
+        gym_list, climber_list = create_route_lists(0, g)
+
+    c = {'g': g, 'user': request.user, 'gym_list': gym_list, \
+         'climber_list': climber_list}
+    return c
+
+
+#####################################################
+#                                                   #
+#            Mobile Phone Detection                 #
+#                                                   #
+#####################################################
+
 mobiles_uas = [
     'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
     'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
@@ -33,16 +76,12 @@ def mobileBrowser(request):
 
     return mobile_browser
 
-def get_data_for_mobile_user_home(request):
-    user = request.user
-    completions = Completed_Route.objects.filter(climber=user.id).order_by('-modified')
-    try:
-        last_completion = completions[0]
-        last_route = Route.objects.get(id=last_completion.route.id)
-    except:
-        last_route = None
 
-    return last_route
+#####################################################
+#                                                   #
+#       Utils Called By Context Generators          #
+#                                                   #
+#####################################################
 
 def add_completed_route(user, route):
     """Tests if Completed_Route object for this user & route exists.
@@ -65,21 +104,11 @@ def create_route_lists(user, gym):
 
     return gym_routes_list, routes_climbed_list
 
-def get_activity_for_home():
-    route_list = Completed_Route.objects.order_by('created')[0:10]
-    return route_list
-
-def get_data_for_gym_page(request, gym_slug):
+def get_last_route_for_user(user):
     try:
-        g = Gym.objects.get(gym_slug=gym_slug)
-    except Gym.DoesNotExist:
-        raise Http404
-
-    try:
-        gym_list, climber_list = create_route_lists(request.user, g)
+        com = Completed_Route.objects.filter(climber=user).order_by('-modified')[0]
+        last_route = Route.objects.get(id=com.route.id)
     except:
-        gym_list, climber_list = create_route_lists(0, g)
+        last_route = None
 
-    c = {'g': g, 'user': request.user, 'gym_list': gym_list, \
-         'climber_list': climber_list}
-    return c
+    return last_route

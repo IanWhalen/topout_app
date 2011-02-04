@@ -22,22 +22,20 @@ def home_view(request):
             return render_to_response('m/m_anon_home.html', \
                                       context_instance=RequestContext(request))
         else:
-            home_activity_list = get_activity_for_home()
+            home_activity_list = get_context_for_anon_home()
             c = {'home_activity_list': home_activity_list}
             c.update(csrf(request))
             return render_to_response('anon_home.html', c)
     else:
         if mobileBrowser(request):
-            last_route = get_data_for_mobile_user_home(request)
-            return render_to_response('m/m_user_home.html', \
-                                      {'user': request.user, 'last_route': last_route})
+            c = get_context_for_mobile_user_home(request)
+            return render_to_response('m/m_user_home.html', c)
         else:
-            user = request.user
-            return render_to_response('user_home.html', \
-                                      {'user': user})
+            c = get_context_for_user_home(request)
+            return render_to_response('user_home.html', c)
 
 def gym_view(request, gym_slug):
-    data = get_data_for_gym_page(request, gym_slug)
+    data = get_context_for_gym_page(request, gym_slug)
     c = {}
     c.update(csrf(request))
 

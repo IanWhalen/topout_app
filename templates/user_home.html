@@ -6,8 +6,22 @@
   <div id="body">
     <div style="align:center" id="content">
       <div class="fullPage" id="loggedInHomepage">
-      Nothing here to see.  Just a placeholder for the real logged-in home page (coming soon.)
-      You probably want the <a href="/gyms/brooklyn-boulders/">Brooklyn Boulders</a> page.
+        <div class="leftColumn">
+          <div id="userInfo">
+            <h2>Hi {{ user }}!</h2>
+            <hr>
+            {% if last_route %}
+            <p>We last saw you climbing at <a href="">Brooklyn Boulders</a>.</p>
+            {% else %}
+            <p>It doesn't look like you've climbed any routes yet.</p>
+            <p><a href="">Find a gym here</a> to start recording your recent climbs.</p>
+            {% endif %}
+          </div>
+          <div id="userClimbs">
+          </div>
+        </div>
+        <div class="rightColumn">
+        </div>
       </div>
     </div>
     <div style="clear: left"></div>
