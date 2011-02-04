@@ -22,7 +22,7 @@
 			<div class="outsideContainer">
 				<ul id="topNav">
 					{% if user.is_authenticated %}
-					<li id="name">Ian Whalen</li>
+					<li id="name">{% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.username }}{% endif %}</li>
 					<li>
 						<a href="">Help</a>
 					</li>
