@@ -57,13 +57,23 @@
 					</li>
 					{% endif %}
 				</ul>
-				<a href="/" id="logo">
-					<p>The Top Out</p>
-				</a>
+				<a href="/" id="logo"><p>The Top Out</p></a>
 			</div>
 		</div>
 			
 		<div id="navbar">
+
+      <div class="outsideContainer">
+      {% if user.is_authenticated %}
+        <ul id="navbarItems">
+          <li><a href="/">Home</a></li>
+          <li><a href="/gyms/brooklyn-boulders/">Gyms</a></li>
+          <li><a href="/">Stats</a></li>
+          <li class="last-item"><a href="/">Friends</a></li>
+        </ul>
+      {% endif %}
+      </div>
+
 		</div>
 
 		{% block content %}{% endblock %}

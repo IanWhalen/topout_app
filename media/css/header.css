@@ -115,3 +115,34 @@ a#logo p {
 font-size: 40px;
 margin: 0px;
 }
+
+#navbar #navbarItems {
+font-weight: bold;
+float: left;
+margin: 9px 0px 0px 4px;
+padding: 0px;
+}
+
+
+#navbar #navbarItems li {
+float: left;
+list-style: none;
+position: relative;
+padding: 0px 13px;
+border-left: 1px solid rgba(0, 0, 0, 0.199219);
+}
+
+#navbar #navbarItems li.last-item {
+border-right: 1px solid rgba(0, 0, 0, 0.199219);
+}
+
+#navbar #navbarItems a {
+color: #474747;
+float: left;
+font-size: 14px;
+font-weight: bold;
+height: 20px;
+line-height: 20px;
+}
+
+
