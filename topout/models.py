@@ -79,9 +79,33 @@ class Route(models.Model):
     class Admin:
         pass
 
+class Session(models.Model):
+    user = models.ForeignKey(User)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    created = models.DateTimeField(editable=False)
+    modified = models.DateTimeField(editable=False)
+
+    def __unicode__(self):
+        return u'%s, %s - %s' % (self.user, self.start_time, self.end_time)
+
+    def save(self, *args, **kwargs):
+        '''On save, update time'''
+        if not self.id:
+            self.created = datetime.today()
+        self.modified = datetime.today()
+        super(Session, self).save(*args, **kwargs)
+
+    class Meta:
+        get_latest_by = 'created'
+
+    class Admin:
+        pass
+
 class Completed_Route(models.Model):
     climber = models.ForeignKey(User)
     route = models.ForeignKey(Route)
+    session = models.ForeignKey(Session)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField(editable=False)
 

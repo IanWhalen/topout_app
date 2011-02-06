@@ -1,6 +1,6 @@
 from models import *
 from django.http import Http404
-
+from datetime import datetime, timedelta
 
 #####################################################
 #                                                   #
@@ -93,9 +93,40 @@ def get_gym_from_slug(gym_slug):
 
 def add_completed_route(user, route):
     """
-    Add new entry to Completed_Route table.
+    Check age of previous user session.
+    If older than 3 hours, create a new session and save both.
+    Otherwise, update old session endtime and save both.
     """
-    obj = Completed_Route.objects.create(climber=user, route=route)
+    now = datetime.now()
+    if not Session.objects.filter(user=user):
+        new_session_obj = Session(user=user,
+                                  start_time=now,
+                                  end_time=now + timedelta(minutes=5))
+        new_session_obj.save()
+        comp_route_obj = Completed_Route(climber=user,
+                                         route=route,
+                                         session=new_session_obj)
+    else:
+        diff = timedelta(hours=3)
+        prior_session_obj = Session.objects.filter(user=user).latest()
+        prior_end_time = prior_session_obj.end_time
+
+        if now - diff < prior_end_time:
+            prior_session_obj.end_time = now + timedelta(minutes=5)
+            prior_session_obj.save()
+            comp_route_obj = Completed_Route(climber=user,
+                                             route=route,
+                                             session=prior_session_obj)
+        else:
+            new_session_obj = Session(user=user,
+                                      start_time=now,
+                                      end_time=now + timedelta(minutes=5))
+            new_session_obj.save()
+            comp_route_obj = Completed_Route(climber=user,
+                                             route=route,
+                                             session=new_session_obj)
+
+    comp_route_obj.save()
     return
 
 def create_route_lists(user, gym):
