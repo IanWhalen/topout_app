@@ -96,6 +96,9 @@ class Route(models.Model):
             self.closed = datetime.today()
         super(Route, self).save(*args, **kwargs)
 
+    class Meta:
+        get_latest_by = 'created'
+
     class Admin:
         pass
 
@@ -114,6 +117,9 @@ class Completed_Route(models.Model):
             self.created = datetime.today()
         self.modified = datetime.today()
         super(Completed_Route, self).save(*args, **kwargs)
+
+    class Meta:
+        get_latest_by = 'created'
 
     class Admin:
         pass
