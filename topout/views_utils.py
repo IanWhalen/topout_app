@@ -28,14 +28,14 @@ def get_context_for_gym_page(request, gym_slug):
     gym = get_gym_from_slug(gym_slug)
 
     try:
-        combo_list, climber_list = create_route_lists(request.user, gym)
+        combo_list, climb_count = create_route_lists(request.user, gym)
     except:
-        combo_list, climber_list = create_route_lists(0, gym)
+        combo_list, climb_count = create_route_lists(0, gym)
 
     c = {'gym': gym,
          'user': request.user,
          'combo_list': combo_list,
-         'climber_list': climber_list}
+         'climb_count': climb_count}
     return c
 
 
@@ -131,24 +131,26 @@ def add_completed_route(user, route):
 
 def create_route_lists(user, gym):
     """
-    Returns two object lists: all routes at gym and
-    all routes climbed by signed-in user.
+    Returns two values: an object list of all routes at gym and
+    a count of all total routes climbed by signed-in user.
     """
     gym_list = Route.objects.filter(gym=gym.id,
                                     is_avail_status=True).order_by('difficulty')
 
-    climber_list = Route.objects.filter(completed_route__climber=user, gym=gym.id,
-                                        is_avail_status=True).order_by('difficulty')
+    route_list = Route.objects.filter(completed_route__climber=user, gym=gym.id,
+                                       is_avail_status=True)
+
+    climb_count = route_list.count()
 
     combo_list = []
     for r in gym_list:
         try:
-            com = Completed_Route.objects.filter(route=r.id).latest('created')
+            com = Completed_Route.objects.filter(route=r, climber=user).latest('created')
         except Completed_Route.DoesNotExist:
             com = None
         combo_list.append((r, com))
 
-    return combo_list, climber_list
+    return combo_list, climb_count
 
 def get_last_route_for_user(user):
     try:
