@@ -10,30 +10,31 @@ from django.http import Http404
 
 def get_context_for_mobile_user_home(request):
     last_route = get_last_route_for_user(request)
-    c = {'user': request.user, 'last_route': last_route}
+    c = {'user': request.user,
+         'last_route': last_route}
     return c
 
 def get_context_for_anon_home():
-    route_list = Completed_Route.objects.order_by('created')[0:10]
+    route_list = Completed_Route.objects.order_by('created')[0:5]
     return route_list
 
 def get_context_for_user_home(request):
     last_route = get_last_route_for_user(request.user)
-    c = {'user': request.user, 'last_route': last_route}
+    c = {'user': request.user,
+         'last_route': last_route}
     return c
 
 def get_context_for_gym_page(request, gym_slug):
-    try:
-        g = Gym.objects.get(gym_slug=gym_slug)
-    except Gym.DoesNotExist:
-        raise Http404
+    gym = get_gym_from_slug(gym_slug)
 
     try:
-        gym_list, climber_list = create_route_lists(request.user, g)
+        combo_list, climber_list = create_route_lists(request.user, gym)
     except:
-        gym_list, climber_list = create_route_lists(0, g)
+        combo_list, climber_list = create_route_lists(0, gym)
 
-    c = {'g': g, 'user': request.user, 'gym_list': gym_list, \
+    c = {'gym': gym,
+         'user': request.user,
+         'combo_list': combo_list,
          'climber_list': climber_list}
     return c
 
@@ -83,26 +84,40 @@ def mobileBrowser(request):
 #                                                   #
 #####################################################
 
+def get_gym_from_slug(gym_slug):
+    try:
+        gym = Gym.objects.get(gym_slug=gym_slug)
+    except Gym.DoesNotExist:
+        raise Http404
+    return gym
+
 def add_completed_route(user, route):
-    """Tests if Completed_Route object for this user & route exists.
-    If not, creates one."""
-    obj, created = Completed_Route.objects.get_or_create(
-        climber=user, route=route)
-    if created:
-        obj.save()
-    else:
-        pass
+    """
+    Add new entry to Completed_Route table.
+    """
+    obj = Completed_Route.objects.create(climber=user, route=route)
+    return
 
 def create_route_lists(user, gym):
-    """ Returns two object lists: all routes at gym and all routes climbed by
-    signed-in user."""
-    gym_routes_list = Route.objects.filter(gym=gym.id,
+    """
+    Returns two object lists: all routes at gym and
+    all routes climbed by signed-in user.
+    """
+    gym_list = Route.objects.filter(gym=gym.id,
                                     is_avail_status=True).order_by('difficulty')
 
-    routes_climbed_list = Route.objects.filter(completed_route__climber=user,
-                                               is_avail_status=True).order_by('difficulty')
+    climber_list = Route.objects.filter(completed_route__climber=user, gym=gym.id,
+                                        is_avail_status=True).order_by('difficulty')
 
-    return gym_routes_list, routes_climbed_list
+    combo_list = []
+    for r in gym_list:
+        try:
+            com = Completed_Route.objects.filter(route=r.id).latest('created')
+        except Completed_Route.DoesNotExist:
+            com = None
+        combo_list.append((r, com))
+
+    return combo_list, climber_list
 
 def get_last_route_for_user(user):
     try:

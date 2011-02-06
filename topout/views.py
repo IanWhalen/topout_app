@@ -35,15 +35,13 @@ def home_view(request):
             return render_to_response('user_home.html', c)
 
 def gym_view(request, gym_slug):
-    data = get_context_for_gym_page(request, gym_slug)
-    c = {}
-    c.update(csrf(request))
+    c = get_context_for_gym_page(request, gym_slug)
 
     if mobileBrowser(request):
-        return render_to_response('m/m_gym.html', data, \
+        return render_to_response('m/m_gym.html', c, \
                                   context_instance=RequestContext(request))
     else:
-        return render_to_response('gym.html', data, \
+        return render_to_response('gym.html', c, \
                                   context_instance=RequestContext(request))
 
 def add_completed_route_view(request, gym_slug, route_id):
