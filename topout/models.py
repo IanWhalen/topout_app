@@ -107,7 +107,7 @@ class Completed_Route(models.Model):
     modified = models.DateTimeField(editable=False)
 
     def __unicode__(self):
-        return u'%s - %s' % (self.climber, self.route)
+        return u'%s - %s' % (self.climber, self.created)
 
     def save(self, *args, **kwargs):
         ''' On save, update time'''

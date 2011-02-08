@@ -297,6 +297,12 @@ width: 60%;
 ul.ManageList li .Column2 {
 float: left;
 padding: 10px 0px;
+width: 10%;
+}
+
+ul.ManageList li .Column3 {
+float: left;
+padding: 10px 0px;
 width: 20%;
 }
 
@@ -313,7 +319,7 @@ border: 1px solid #D4D4D4;
 #RouteList .Column4 {
 color: #AAA;
 position: relative;
-padding: 10px 0px 10px;
+padding: 18px 0px 18px;
 }
 
 ul.ManageList li .Column1 h3 {
@@ -321,8 +327,7 @@ color: #555;
 font-size: 13px;
 font-weight: bold;
 line-height: 25px;
-margin: 0px 0px 0px 60px;
-padding: 0px;
+padding: 2px;
 }
 
 ul.ManageList li .Column1 div.RouteColorImage {
@@ -332,15 +337,39 @@ border: 1px solid #CCC;
 float: left;
 margin-right: 10px;
 padding: 3px;
-width: 32px;
-height: 32px;
+width: 16px;
+height: 48px;
+}
+
+ul.ManageList li#gymName {
+height: 26px;
+min-height: 26px;
+}
+
+ul.ManageList li.wallName {
+height: 24px;
+min-height: 24px;
+}
+
+ul.ManageList li.route {
+background: white;
+}
+
+ul.ManageList li#gymName h3 {
+margin: 2px 0px 2px 10px;
+}
+
+ul.ManageList li.wallName h4 {
+margin: 5px 0px 5px 10px;
 }
 
 ul.ManageList li .Column1 p {
 height: 12px;
 line-height: 12px;
-margin: 0px 0px 0px 60px;
+margin: 2px 0px 2px 0px;
 padding: 0px;
+font-style: italic;
+color: #86C543;
 }
 
 #RouteList .Column3 p {
@@ -348,21 +377,12 @@ margin: 0px;
 }
 
 #RouteList .Column2 {
-padding: 17px 0px 17px;
-}
-
-#RouteList .Column3 {
-padding: 15px 0px;
+padding: 25px 0px 25px;
 }
 
 #RouteList .Column4 span {
 float: right;
-margin-right: 20px;
-}
-
-#RouteList .Column4 span #Done {
-float: right;
-margin-right: 14px;
+margin-right: 10px;
 }
 
 .newGreenButton {
@@ -396,35 +416,8 @@ text-decoration: none;
 text-transform: capitalize;
 }
 
-#body #content #registrationPage form {
-float: left;
-}
-
-#registrationPage form input {
-width: 400px;
-margin-bottom: 12px;
-}
-
-#registrationPage label, #home label {
-font-weight: bold;
-padding-bottom: 5px;
-float: left;
-font-size: 13px;
-}
-
 div .clear {
 clear: both;
-}
-
-#registrationPage input[type="text"], #home input[type="text"] {
-border: 1px solid #C2C2C2;
-border-bottom-left-radius: 5px 5px;
-border-bottom-right-radius: 5px 5px;
-border-top-left-radius: 5px 5px;
-border-top-right-radius: 5px 5px;
-font-size: 18px;
-padding: 10px;
-width: 200px;
 }
 
 body #home {

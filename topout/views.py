@@ -37,7 +37,7 @@ def home_view(request):
 def gym_view(request, gym_slug):
     c = get_context_for_gym_page(request, gym_slug)
 
-    if mobileBrowser(request):
+    if True:
         return render_to_response('m/m_gym.html', c, \
                                   context_instance=RequestContext(request))
     else:
