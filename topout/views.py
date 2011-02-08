@@ -37,12 +37,10 @@ def home_view(request):
 def gym_view(request, gym_slug):
     c = get_context_for_gym_page(request, gym_slug)
 
-    if True:
-        return render_to_response('m/m_gym.html', c, \
-                                  context_instance=RequestContext(request))
+    if mobileBrowser(request):
+        return render_to_response('m/m_gym.html', c, context_instance=RequestContext(request))
     else:
-        return render_to_response('gym.html', c, \
-                                  context_instance=RequestContext(request))
+        return render_to_response('gym.html', c, context_instance=RequestContext(request))
 
 def add_completed_route_view(request, gym_slug, route_id):
     if request.method == 'POST' and request.user.is_authenticated():
