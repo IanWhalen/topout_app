@@ -1,0 +1,127 @@
+/* Start Global Styling */
+
+a:link, a:visited {
+color: #474747;
+font-weight: bold;
+text-decoration: none;
+}
+
+a:focus, a:hover {
+text-decoration: underline;
+}
+
+/* End Global Styling */
+
+/* Start Logged-In Header Styling */
+
+div#header {
+background-color: #E6E6E6;
+height: 90px;
+width: 100%;
+}
+
+ul#topNav {
+float: right;
+}
+
+ul#topNav li {
+float: left;
+list-style: none;
+margin-left: 20px;
+}
+
+div#navBar {
+height: 36px;
+width: 100%;
+background: #A0C578 url('/site_media/bg-nav.png') repeat-x 0% 0%;
+font-weight: bold;
+}
+
+ul#navBarItems {
+padding: 9px 0px;
+}
+
+ul#navBarItems li {
+border-left: 1px solid rgba(0, 0, 0, 0.199219);
+float: left;
+list-style: none;
+padding-left: 18px;
+padding-right: 18px;
+}
+
+ul#navBarItems li.last-item {
+border-right: 1px solid rgba(0, 0, 0, 0.199219);
+}
+
+/* End Logged-In Header Styling */
+
+/* Start User Home Styling */
+
+div#userInfo {
+border: 1px solid #CCC;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+padding: 8px;
+}
+
+div#userInfo h2, div#userInfo p {
+margin-bottom: 9px;
+}
+
+div#prevSessionHeader {
+background: #CCC;
+border-bottom-left-radius: 0px 0px;
+border-bottom-right-radius: 0px 0px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+color: #474747;
+font-weight: bold;
+padding: 0px 9px;
+}
+
+div#prevSession ul {
+list-style: none;
+padding: 0px;
+margin: 0px;
+}
+
+div#prevSession li {
+border-bottom: 1px solid #CCC;
+border-left: 1px solid #CCC;
+border-right: 1px solid #CCC;
+min-height: 53px;
+}
+
+div#routeColor {
+background: white;
+border: 1px solid #CCC;
+padding: 3px;
+margin-top: 5px;
+margin-bottom: 5px;
+margin-left: 10px;
+}
+
+div#routeInfo h5 {
+color: #555;
+font-weight: bold;
+margin: 9px 0px 0px 0px;
+}
+
+div#routeInfo p {
+margin: 0px 0px 9px 0px;
+}
+
+div#routeDiff h3 {
+color: #888;
+font-weight: bold;
+line-height: 3;
+margin: 0px;
+}
+
+div#routeDiff {
+width: 68px; /* Ugly hack to keep Difficulty on same row.  Need a better solution. */
+}
+
+/* End User Home Styling */

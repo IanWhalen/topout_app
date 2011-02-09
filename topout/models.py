@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from models_utils import *
 
+##########################################
+#                                        #
+#          Hierarchy of objects          #
+#                                        #
+##########################################
+
 class Gym(models.Model):
     gym_name = models.CharField(unique=True, max_length=50)
     gym_slug = models.SlugField()
