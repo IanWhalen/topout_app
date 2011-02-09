@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 def get_context_for_mobile_user_home(request):
     last_route = get_last_route_for_user(request)
     c = {'user': request.user,
-         'last_route': last_route}
+         'completes': completes}
     return c
 
 def get_context_for_anon_home():
@@ -20,8 +20,10 @@ def get_context_for_anon_home():
 
 def get_context_for_user_home(request):
     last_route = get_last_route_for_user(request.user)
+    prev_session = get_completes_in_prev_session(request.user)
     c = {'user': request.user,
-         'last_route': last_route}
+         'last_route': last_route,
+         'prev_session': prev_session}
     return c
 
 def get_context_for_gym_page(request, gym_slug):
@@ -50,7 +52,7 @@ mobiles_uas = [
     'newt','noki','oper','palm','pana','pant','phil','play','port','prox',
     'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',
     'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',
-    'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
+    'toshi','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
     'wapr','webc','winw','winw','xda','xda-'
     ]
 
@@ -80,6 +82,11 @@ def mobileBrowser(request):
 #       Utils Called By Context Generators          #
 #                                                   #
 #####################################################
+
+def get_completes_in_prev_session(user):
+    prev_session = Session.objects.filter(user=user).latest()
+    completes = Completed_Route.objects.filter(session=prev_session)
+    return completes
 
 def get_gym_from_slug(gym_slug):
     try:
