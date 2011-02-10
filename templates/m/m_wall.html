@@ -1,0 +1,79 @@
+{% load global_js %}
+{% load humanize_timesince %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>{% block title %} the top out {% endblock %}</title>
+
+		<meta name="description" content="An app to track your climbing."/>
+		<meta name="keywords" content="bouldering, climbing"/>
+
+    <link rel="stylesheet" type="text/css" href="/site_media/css/m_gym.css"/>
+    {% google_analytics %}
+	</head>
+
+	<body>
+    <div id="header">
+      <h2 style="float: left;">The Top Out</h2>
+      <p style="float: right;">{{ user }}</p>
+      <br/>
+      <div class="clear"></div>
+    </div>
+		<div id="content">
+        
+      <ul class="ManageList" id="RouteList">
+        <li id="gymName">
+        <h3>{{ wall.gym }}</h3>
+        </li>
+            <li class="wallName">
+              <h4>{{ wall }}</h4>
+            </li>
+            {% for route in route_list %}
+            <li class="route">
+
+							<div class="Column1">
+								<div class="RouteColorImage">
+									{% if not route.secondary_color %}
+									<div style="background: {{ route.primary_color }}; height: 100%;"></div>
+									{% else %}
+									<div style="float: left; background: {{ route.primary_color }}; height: 50%; width: 16px;"></div>
+									<div style="float: left; background: {{ route.secondary_color }}; height: 50%; width: 16px;"></div>
+									{% endif %}
+								</div>
+                <h3>{{ route }}</h3>
+                {% if route.latest_completed_route %}
+                <p>{{ route.latest_completed_route|timesince_human }}</p>
+                {% endif %}
+              </div>
+
+							<div class="Column2">
+								<h3><b>{{ route.difficulty }}</b></h3>
+              </div>
+
+							<div class="Column4">
+								<span>
+								{% if user.is_authenticated %}
+										<form action="/gyms/{{ gym.gym_slug }}/routes/{{ route.id }}/complete/" method="post">
+											{% csrf_token %}
+											<input type="hidden" name="route_id" value="{{ route.id }}" />
+											<input type="submit" value="Done" class="newGreenButton" id="MarkRouteAsDone"/>
+										</form>
+								{% else %}
+								<form action="{% url registration_register %}" method="link">
+									<input type="submit" value="Mark As Done" class="newGreenButton" id="MarkRouteAsDone"/>
+								</form>
+								{% endif %}
+								</span>
+              </div>
+
+							<div style="clear: both;"></div>
+						</li>
+            {% endfor %}
+					</ul>
+    </div>
+    <div id="footer">
+    <hr>
+    <a href="{% url auth_logout %}">Log Out</a>
+    </div>
+  </body>

@@ -26,6 +26,15 @@ def get_context_for_user_home(request):
          'prev_session': prev_session}
     return c
 
+def get_context_for_wall_page(request, gym_slug, wall_slug):
+    wall = get_wall_from_slugs(gym_slug, wall_slug)
+    route_list = get_list_for_wall(request.user, wall)
+
+    c = {'user': request.user,
+         'route_list': route_list,
+         'wall': wall}
+    return c
+
 def get_context_for_gym_page(request, gym_slug):
     gym = get_gym_from_slug(gym_slug)
 
@@ -88,10 +97,18 @@ def get_completes_in_prev_session(user):
     completes = Completed_Route.objects.filter(session=prev_session)
     return completes
 
+def get_wall_from_slugs(gym_slug, wall_slug):
+    try:
+        gym = Gym.objects.get(gym_slug=gym_slug)
+        wall = Wall.objects.get(wall_slug=wall_slug)
+    except:
+        raise Htp404
+    return wall
+
 def get_gym_from_slug(gym_slug):
     try:
         gym = Gym.objects.get(gym_slug=gym_slug)
-    except Gym.DoesNotExist:
+    except:
         raise Http404
     return gym
 
@@ -137,6 +154,17 @@ def get_lists_for_gym(user, gym):
     route_list = Route.objects.filter(gym=gym.id,
                                       is_avail_status=True).order_by('wall', 'difficulty')
 
+    route_list, climb_count = append_last_climbed(route_list)
+    return route_list, climb_count
+
+def get_list_for_wall(user, wall):
+    route_list = Route.objects.filter(wall=wall.id,
+                                      is_avail_status=True).order_by('difficulty')
+
+    route_list, climb_count = append_last_climbed(route_list)
+    return route_list
+
+def append_last_climbed(route_list):
     climb_count = 0
     for route in route_list:
         try:

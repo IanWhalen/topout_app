@@ -33,7 +33,8 @@ class Gym(models.Model):
         pass
 
 class Wall(models.Model):
-    wall_name = models.CharField(max_length=50)
+    wall_name = models.CharField(unique=True, max_length=50)
+    wall_slug= models.SlugField()
     gym = models.ForeignKey(Gym)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField(editable=False)
