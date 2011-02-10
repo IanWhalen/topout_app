@@ -10,6 +10,37 @@ a:focus, a:hover {
 text-decoration: underline;
 }
 
+div.routeTableHeader {
+background: #CCC;
+border-bottom-left-radius: 0px 0px;
+border-bottom-right-radius: 0px 0px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+color: #474747;
+font-weight: bold;
+padding: 0px 9px;
+}
+
+div.routeTable ul {
+list-style: none;
+padding: 0px;
+margin: 0px;
+}
+
+div.routeTable li {
+border-bottom: 1px solid #CCC;
+border-left: 1px solid #CCC;
+border-right: 1px solid #CCC;
+min-height: 53px;
+}
+
+div#prevSession, div#userInfo, div#gymStats,
+div#gymDetail, div#gymRouteList {
+-webkit-box-shadow: 0 -1px 3px #DDD;
+-moz-box-shadow: 0 -1px 3px #DDD;
+box-shadow: 0 -1px 3px #DDD;
+}
+
 /* End Global Styling */
 
 /* Start Logged-In Header Styling */
@@ -70,30 +101,6 @@ div#userInfo h2, div#userInfo p {
 margin-bottom: 9px;
 }
 
-div#prevSessionHeader {
-background: #CCC;
-border-bottom-left-radius: 0px 0px;
-border-bottom-right-radius: 0px 0px;
-border-top-left-radius: 5px 5px;
-border-top-right-radius: 5px 5px;
-color: #474747;
-font-weight: bold;
-padding: 0px 9px;
-}
-
-div#prevSession ul {
-list-style: none;
-padding: 0px;
-margin: 0px;
-}
-
-div#prevSession li {
-border-bottom: 1px solid #CCC;
-border-left: 1px solid #CCC;
-border-right: 1px solid #CCC;
-min-height: 53px;
-}
-
 div#routeColor {
 background: white;
 border: 1px solid #CCC;
@@ -101,6 +108,7 @@ padding: 3px;
 margin-top: 5px;
 margin-bottom: 5px;
 margin-left: 10px;
+margin-right: 20px;
 }
 
 div#routeInfo h5 {
@@ -125,3 +133,42 @@ width: 68px; /* Ugly hack to keep Difficulty on same row.  Need a better solutio
 }
 
 /* End User Home Styling */
+
+/* Start Gym Page Styling */
+
+div#gymDetail{
+background-color: #F4F4F4;
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+}
+
+div#gymDetail h2 {
+color: #444;
+font-weight: bold;
+margin: 9px 0px 9px 10px;
+}
+
+div#gymStats {
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+width: 308px;
+}
+
+div#gymStatsText {
+}
+
+div#gymStatsText p {
+color: #444;
+font-size: 1.5em;
+line-height: 1.5em;
+margin: 0px;
+padding: 9px;
+}
+
+/* End Gym Page Styling */

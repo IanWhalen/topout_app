@@ -87,26 +87,26 @@
             {% endif %}
           </div>
 
-          <div class="prepend-top" id="prevSession">
-            <div id="prevSessionHeader">
+          <div class="routeTable prepend-top" id="prevSession">
+            <div class="routeTableHeader">
               <p class="large bottom">Last time out you climbed...</p>
             </div>
             <ul>
               {% for complete in prev_session %}
               <li>
-              <div class="span-2">
+              <div class="span-3">
                 <div id="routeColor">
-                {% if not complete.route.secondary_color %}
-                <div style="background: {{ complete.route.primary_color }}; height: 36px;"></div>
-                {% else %}
-                <div style="float: left; background: {{ complete.route.primary_color }}; height: 36px; width: 50%;"></div>
-                <div style="float: left; background: {{ complete.route.secondary_color }}; height: 36px; width: 50%;"></div>
-                <div class="clear"></div>
-                {% endif %}
-              </div>
+                  {% if not complete.route.secondary_color %}
+                  <div style="background: {{ complete.route.primary_color }}; height: 36px;"></div>
+                  {% else %}
+                  <div style="float: left; background: {{ complete.route.primary_color }}; height: 36px; width: 50%;"></div>
+                  <div style="float: left; background: {{ complete.route.secondary_color }}; height: 36px; width: 50%;"></div>
+                  <div class="clear"></div>
+                  {% endif %}
+                </div>
               </div>
 
-              <div class="span-12" id="routeInfo">
+              <div class="span-11" id="routeInfo">
                 <h5>{{ complete.route }}</h5>
                 <p>{{ complete.route.wall }}</p>
               </div>
