@@ -9,9 +9,9 @@ from datetime import datetime, timedelta
 #####################################################
 
 def get_context_for_mobile_user_home(request):
-    last_route = get_last_route_for_user(request)
+    last_route = get_last_route_for_user(request.user)
     c = {'user': request.user,
-         'completes': completes}
+         'last_route': last_route}
     return c
 
 def get_context_for_anon_home():
