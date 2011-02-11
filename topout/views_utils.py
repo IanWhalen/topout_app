@@ -154,17 +154,17 @@ def get_lists_for_gym(user, gym):
     route_list = Route.objects.filter(gym=gym.id,
                                       is_avail_status=True).order_by('wall', 'difficulty')
 
-    route_list, climb_count = append_last_climbed(route_list)
+    route_list, climb_count = append_last_climbed(user, route_list)
     return route_list, climb_count
 
 def get_list_for_wall(user, wall):
     route_list = Route.objects.filter(wall=wall.id,
                                       is_avail_status=True).order_by('difficulty')
 
-    route_list, climb_count = append_last_climbed(route_list)
+    route_list, climb_count = append_last_climbed(user, route_list)
     return route_list
 
-def append_last_climbed(route_list):
+def append_last_climbed(user, route_list):
     climb_count = 0
     for route in route_list:
         try:

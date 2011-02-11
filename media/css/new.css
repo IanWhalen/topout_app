@@ -136,7 +136,7 @@ width: 68px; /* Ugly hack to keep Difficulty on same row.  Need a better solutio
 
 /* Start Gym Page Styling */
 
-div#gymDetail{
+div#gymDetail {
 background-color: #F4F4F4;
 border: 1px solid #CCC;
 border-bottom-left-radius: 5px 5px;
@@ -158,9 +158,6 @@ border-bottom-right-radius: 5px 5px;
 border-top-left-radius: 5px 5px;
 border-top-right-radius: 5px 5px;
 width: 308px;
-}
-
-div#gymStatsText {
 }
 
 div#gymStatsText p {

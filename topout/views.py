@@ -43,7 +43,7 @@ def gym_view(request, gym_slug):
         return render_to_response('gym.html', c, context_instance=RequestContext(request))
 
 def wall_view(request, gym_slug, wall_slug):
-    if mobileBrowser(request):
+    if True:
         c = get_context_for_wall_page(request, gym_slug, wall_slug)
         return render_to_response('m/m_wall.html', c, context_instance=RequestContext(request))
     else:
