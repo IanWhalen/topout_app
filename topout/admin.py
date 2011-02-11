@@ -8,6 +8,16 @@ class RouteAdmin(admin.ModelAdmin):
                     'is_avail_status', 'created')
     list_filter = ('wall', 'is_avail_status', 'gym', 'difficulty')
     ordering = ('-created',)
+    actions = ['routes_takedown']
+
+    def routes_takedown(self, request, queryset):
+        rows_updated = queryset.update(is_avail_status=False)
+        if rows_updated == 1:
+            message_bit = "1 route was"
+        else:
+            message_bit = "%s routes were" % rows_updated
+        self.message_user(request, '%s succesfully marked as unavailable.' % message_bit)
+    routes_takedown.short_description= "Mark routes as unavailable"
 
 class Completed_RouteAdmin(admin.ModelAdmin):
     pass
