@@ -12,6 +12,10 @@ from models_utils import *
 class Gym(models.Model):
     gym_name = models.CharField(unique=True, max_length=50)
     gym_slug = models.SlugField()
+    gym_address = models.CharField(max_length=50)
+    gym_city = models.CharField(max_length=50)
+    gym_state = models.CharField(max_length=20)
+    gym_zip = models.CharField(max_length=20)
     url = models.URLField()
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField(editable=False)

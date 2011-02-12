@@ -1,6 +1,7 @@
 from models import *
 from django.http import Http404
 from datetime import datetime, timedelta
+import urllib
 
 #####################################################
 #                                                   #
@@ -37,11 +38,12 @@ def get_context_for_wall_page(request, gym_slug, wall_slug):
 
 def get_context_for_gym_page(request, gym_slug):
     gym = get_gym_from_slug(gym_slug)
-
+    gym_map = get_map_for_gym(gym)
     route_list, climb_count = get_lists_for_gym(request.user, gym)
 
     c = {'gym': gym,
          'user': request.user,
+         'gym_map': gym_map,
          'route_list': route_list,
          'climb_count': climb_count}
     return c
@@ -183,3 +185,25 @@ def get_last_route_for_user(user):
         last_route = None
 
     return last_route
+
+def get_map_for_gym(gym):
+    # Static fields
+    base = 'http://maps.google.com/maps/api/staticmap?'
+    size = '290x170'
+    markers = 'markers'
+    sensor = 'false'
+
+    # Dynamic fields
+    address = gym.gym_address
+    city = gym.gym_city
+    state = gym.gym_state
+    zip_code = gym.gym_zip
+    location = ' '.join([address, city, state, zip_code])
+
+    # Concatenate list
+    params = urllib.urlencode({'size': size,
+                               'markers': location,
+                               'sensor': sensor})
+    str_list = [base, params]
+
+    return ''.join(str_list)

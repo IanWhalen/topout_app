@@ -117,11 +117,14 @@
     <!-- End div#gymRouteList -->
     <!-- End div.leftColumn -->
 
-  <div class="span-8 rightColumn last" id="gymStats">
-    <div id="gymStatsText">
-      <p>{{ gym }} has <b>{{ route_list.count }} bouldering problems</b> ranging from <b>V0 to V11+</b>.
-      In the past 30 days <b>5 climbers</b> have made <b>83 sends</b> for a total of <b>1,320 feet climbed</b>.</p>
-    </div>
+    <div class="span-8 rightColumn last" id="gymStats">
+      <div id="gymMap">
+        <img src="{{ gym_map }}" />
+      </div>
+      <div id="gymStatsText">
+        <p>{{ gym }} has <b>{{ route_list.count }} bouldering problems</b> ranging from <b>V0 to V11+</b>.
+        In the past 30 days <b>5 climbers</b> have made <b>83 sends</b> for a total of <b>1,320 feet climbed</b>.</p>
+      </div>
   </div>
   <!-- End div.rightColumn -->
 

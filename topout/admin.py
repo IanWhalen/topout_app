@@ -27,7 +27,8 @@ class WallAdmin(admin.ModelAdmin):
     prepopulated_field = {'wall_slug': ('wall_name',)}
 
 class GymAdmin(admin.ModelAdmin):
-    list_display = ('gym_name', 'url', 'created')
+    list_display = ('gym_name', 'gym_address', 'gym_city', 'gym_state',
+                    'gym_zip', 'url', 'created')
     prepopulated_fields = {'gym_slug': ('gym_name',)}
 
 admin.site.register(Route, RouteAdmin)
