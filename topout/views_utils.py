@@ -95,8 +95,11 @@ def mobileBrowser(request):
 #####################################################
 
 def get_completes_in_prev_session(user):
-    prev_session = Session.objects.filter(user=user).latest()
-    completes = Completed_Route.objects.filter(session=prev_session)
+    try:
+        prev_session = Session.objects.filter(user=user).latest()
+        completes = Completed_Route.objects.filter(session=prev_session)
+    except:
+        completes = None
     return completes
 
 def get_wall_from_slugs(gym_slug, wall_slug):
