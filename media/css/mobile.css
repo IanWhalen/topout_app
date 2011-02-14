@@ -1,9 +1,30 @@
-div#routeTable li {
+/* Start Mobile Global Styling */
+
+div#header {
+background: #E6E6E6;
+}
+
+div#header h2 {
+margin-bottom: 0px;
+padding: 9px 0px;
+}
+
+div#header p {
+float: right;
+margin-bottom: 0px;
+padding: 18px 0px;
+}
+
+/* End Mobile Global Styling */
+
+/* Start Mobile Wall Page Styling */
+
+div#routeTable li, div#wallTable li {
 border-bottom: 1px solid #CCC;
 list-style: none;
 }
 
-div#routeTable ul {
+div#routeTable ul, div#wallTable ul {
 margin: 0px;
 padding: 0px;
 }
@@ -11,10 +32,11 @@ padding: 0px;
 div#routeColor {
 background: white;
 border: 1px solid #CCC;
-height: 54px;
+height: 58px;
 padding: 3px;
-margin-top: 5px;
-margin-bottom: 5px;
+margin-top: 3px;
+margin-bottom: 3px;
+margin-left: 3px;
 }
 
 div#routeInfo h5 {
@@ -50,3 +72,40 @@ text-decoration: none;
 text-transform: capitalize;
 width: 56px;
 }
+
+li#wallName {
+background: #CCC;
+}
+
+li.wallName h4 {
+color: #474747;
+font-weight: bold;
+margin-bottom: 0px;
+padding: 9px 0px 9px 6px;
+}
+
+li#gymName h3 {
+margin-bottom: 0px;
+padding: 9px 0px 9px 6px;
+}
+
+/* End Mobile Wall Page Styling */
+
+/* Start Mobile Gym Page Styling */
+
+.wallPageButton {
+border: 1px solid #E6E6E6;
+color: #555;
+cursor: pointer;
+font-weight: bold;
+line-height: 1.5;
+text-align: center;
+text-shadow: rgba(0, 0, 0, 0.0976562) 0px -1px 0px;
+background: #E6E6E6;
+text-decoration: none;
+text-transform: capitalize;
+margin: 6px 9px 6px 0px;
+width: 27px;
+}
+
+/* End Mobile Gym Page Styling */

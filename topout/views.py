@@ -43,22 +43,19 @@ def gym_view(request, gym_slug):
         return render_to_response('gym.html', c, context_instance=RequestContext(request))
 
 def wall_view(request, gym_slug, wall_slug):
-    if True:
+    if mobileBrowser(request):
         c = get_context_for_wall_page(request, gym_slug, wall_slug)
         return render_to_response('m/m_wall.html', c, context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect(reverse('gym_view', args=[gym_slug]))
 
-def add_completed_route_view(request, gym_slug, route_id):
+def add_completed_route_view(request):
     if request.method == 'POST' and request.user.is_authenticated():
         try:
-            r = Route.objects.get(id=route_id)
-            g = Gym.objects.get(gym_slug=gym_slug)
+            r = Route.objects.get(id=request.REQUEST['route_id'])
         except:
             raise Http404
         add_completed_route(request.user, r)
-        return HttpResponseRedirect('/gyms/brooklyn-boulders/')
+        return HttpResponseRedirect(request.REQUEST['next'])
     else:
-        latest_route_list = Route.objects.order_by('created')[0:10]
-        return render_to_response('anon_home.html', {'latest_route_list':
-                                                     latest_route_list})
+        return HttpResponseRedirect(reverse('home_view'))

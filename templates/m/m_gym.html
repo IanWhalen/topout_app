@@ -1,3 +1,6 @@
+{% load global_js %}
+{% load humanize_timesince %}
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 	<head>
@@ -5,86 +8,62 @@
 
 		<meta name="description" content="An app to track your climbing."/>
 		<meta name="keywords" content="bouldering, climbing"/>
+    
+    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/screen.css" media="screen, projection"/>
+    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/print.css" media="print"/>
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/ie.css" media="screen, projection"/>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/site_media/css/mobile.css" media="screen"/>
 
-    <link rel="stylesheet" type="text/css" href="/site_media/css/m_gym.css"/>
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-21179527-1']);
-      _gaq.push(['_trackPageview']);
+    <script type="text/javascript" src="/site_media/javascript/jquery-1.4.4.min.js"></script> 
 
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    {% load humanize_timesince %}
+    {% google_analytics %}
 	</head>
+
 
 	<body>
     <div id="header">
-      <h2 style="float: left;">The Top Out</h2>
-      <p style="float: right;">{{ user }}</p>
-      <br/>
+      <div class="container">
+        <div class="span-4"><h2>The Top Out</h2></div>
+        <div class="span-4 last"><p>{{ user }}</p></div>
+        <br/>
+      </div>
       <div class="clear"></div>
     </div>
-		<div id="content">
-        
-      <ul class="ManageList" id="RouteList">
-        <li id="gymName">
-        <h3>{{ gym }}</h3>
-        </li>
-            {% regroup route_list by wall as walls %}
-            {% for wall in walls %}
-            <li class="wallName">
-            <h4>{{ wall.grouper }}</h4>
-            </li>
-            {% for route in wall.list %}
-            <li class="route">
+    <!-- End div#header -->
 
-							<div class="Column1">
-								<div class="RouteColorImage">
-									{% if not route.secondary_color %}
-									<div style="background: {{ route.primary_color }}; height: 100%;"></div>
-									{% else %}
-									<div style="float: left; background: {{ route.primary_color }}; height: 50%; width: 16px;"></div>
-									<div style="float: left; background: {{ route.secondary_color }}; height: 50%; width: 16px;"></div>
-									{% endif %}
-								</div>
-                <h3>{{ route }}</h3>
-                {% if route.latest_completed_route %}
-                <p>{{ route.latest_completed_route|timesince_human }}</p>
-                {% endif %}
-              </div>
+    <div id="content">
+      <div class="container">
+      <div class="span-8" id="wallTable">    
+        <ul>
 
-							<div class="Column2">
-								<h3><b>{{ route.difficulty }}</b></h3>
-              </div>
+          <li id="gymName">
+            <h3>{{ gym }}</h3>
+          </li>
 
-							<div class="Column4">
-								<span>
-								{% if user.is_authenticated %}
-										<form action="/gyms/{{ gym.gym_slug }}/routes/{{ route.id }}/complete/" method="post">
-											{% csrf_token %}
-											<input type="hidden" name="route_id" value="{{ route.id }}" />
-											<input type="submit" value="Done" class="newGreenButton" id="MarkRouteAsDone"/>
-										</form>
-								{% else %}
-								<form action="{% url registration_register %}" method="link">
-									<input type="submit" value="Mark As Done" class="newGreenButton" id="MarkRouteAsDone"/>
-								</form>
-								{% endif %}
-								</span>
-              </div>
+          {% for wall in wall_list %}
+          <li class="wallName">
+            <div class="span-7">
+              <h4>{{ wall }}</h4>
+            </div>
+            <div class="span-1 last">
+              <form action="{{ wall.get_absolute_url }}" method="link">
+                <input type="submit" value=">" class="wallPageButton" />
+              </form>
+            </div>
+            <div class="clear"></div>
+          </li>
+          {% endfor %}
 
-							<div style="clear: both;"></div>
-						</li>
-            {% endfor %}
-            {% endfor %}
-					</ul>
+        </ul>
+
+      </div>
     </div>
     <div id="footer">
-    <hr>
+      <div class="container">
+        <div class="span-8 prepend-top">
     <a href="{% url auth_logout %}">Log Out</a>
-    </div>
+  </div>
+</div>
   </body>

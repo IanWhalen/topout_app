@@ -47,6 +47,9 @@ class Wall(models.Model):
     def __unicode__(self):
         return u'%s' % (self.wall_name)
 
+    def get_absolute_url(self):
+        return u'/gyms/%s/walls/%s/' % (self.gym.gym_slug, self.wall_slug)
+
     def save(self, *args, **kwargs):
         ''' On save, update time'''
         if not self.id:

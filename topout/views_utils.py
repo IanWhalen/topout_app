@@ -39,12 +39,13 @@ def get_context_for_wall_page(request, gym_slug, wall_slug):
 def get_context_for_gym_page(request, gym_slug):
     gym = get_gym_from_slug(gym_slug)
     gym_map = get_map_for_gym(gym)
-    route_list, climb_count = get_lists_for_gym(request.user, gym)
+    wall_list, route_list, climb_count = get_lists_for_gym(request.user, gym)
 
     c = {'gym': gym,
          'user': request.user,
          'gym_map': gym_map,
          'route_list': route_list,
+         'wall_list': wall_list,
          'climb_count': climb_count}
     return c
 
@@ -156,11 +157,12 @@ def add_completed_route(user, route):
     return
 
 def get_lists_for_gym(user, gym):
+    wall_list = Wall.objects.filter(gym=gym.id)
     route_list = Route.objects.filter(gym=gym.id,
                                       is_avail_status=True).order_by('wall', 'difficulty')
 
     route_list, climb_count = append_last_climbed(user, route_list)
-    return route_list, climb_count
+    return wall_list, route_list, climb_count
 
 def get_list_for_wall(user, wall):
     route_list = Route.objects.filter(wall=wall.id,

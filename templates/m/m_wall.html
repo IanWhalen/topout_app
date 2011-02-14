@@ -42,7 +42,7 @@
             <h3>{{ wall.gym }}</h3>
             </li>
             
-            <li id="wallName">
+            <li class="wallName" id="wallName">
               <h4>{{ wall }}</h4>
             </li>
 
@@ -62,7 +62,7 @@
               <div class="span-4" id="routeInfo">
                 <h5>{{ route }}</h5>
                 {% if route.latest_completed_route %}
-                <p>{{ route.latest_completed_route|timesince_human }}</p>
+                <p><em>{{ route.latest_completed_route|timesince_human }}</em></p>
                 {% endif %}
               </div>
 
@@ -72,10 +72,11 @@
 
 							<div class="span-2 last" id="routeDone">
 								{% if user.is_authenticated %}
-										<form action="/gyms/{{ route.gym.gym_slug }}/routes/{{ route.id }}/complete/" method="post">
+										<form action="/routes/{{ route.id }}/complete/" method="post">
 											{% csrf_token %}
-											<input type="hidden" name="route_id" value="{{ route.id }}" />
-											<input type="submit" value="Done" class="doneButton"/>
+                      <input type="hidden" name="route_id" value="{{ route.id }}" />
+                      <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+											<input type="submit" value="Done" class="doneButton" />
 										</form>
 								{% else %}
 								<form action="{% url registration_register %}" method="link">
@@ -84,16 +85,22 @@
 								{% endif %}
               </div>
 
-							<div style="clear: both;"></div>
+							<div class="clear"></div>
 						</li>
             {% endfor %}
 					</ul>
         </div>
       </div>
         <div class="clear"></div>
-    </div>
+      </div>
+    <!-- End div#content -->
     <div id="footer">
-    <hr>
-    <a href="{% url auth_logout %}">Log Out</a>
+      <div class="container">
+        <div class="span-8 prepend-top">
+          <a href="{% url auth_logout %}">Log Out</a>
+        </div>
+      </div>
     </div>
+
+    <!-- End div#footer -->
   </body>
