@@ -54,7 +54,7 @@ def add_completed_route_view(request):
         try:
             r = Route.objects.get(id=request.REQUEST['route_id'])
         except:
-            raise Http404
+            return HttpResponseRedirect(request.REQUEST['next'])
         add_completed_route(request.user, r)
         return HttpResponseRedirect(request.REQUEST['next'])
     else:

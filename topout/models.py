@@ -11,7 +11,7 @@ from models_utils import *
 
 class Gym(models.Model):
     gym_name = models.CharField(unique=True, max_length=50)
-    gym_slug = models.SlugField()
+    gym_slug = models.SlugField(unique=True)
     gym_address = models.CharField(max_length=50)
     gym_city = models.CharField(max_length=50)
     gym_state = models.CharField(max_length=20)
@@ -38,7 +38,7 @@ class Gym(models.Model):
 
 class Wall(models.Model):
     wall_name = models.CharField(unique=True, max_length=50)
-    wall_slug= models.SlugField()
+    wall_slug= models.SlugField(unique=True)
     wall_height = models.PositiveIntegerField()
     gym = models.ForeignKey(Gym)
     created = models.DateTimeField(editable=False)
@@ -48,7 +48,7 @@ class Wall(models.Model):
         return u'%s' % (self.wall_name)
 
     def get_absolute_url(self):
-        return u'/gyms/%s/walls/%s/' % (self.gym.gym_slug, self.wall_slug)
+        return u'/gyms/brooklyn-boulders/walls/%s/' % (self.wall_slug)
 
     def save(self, *args, **kwargs):
         ''' On save, update time'''

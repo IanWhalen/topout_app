@@ -23,7 +23,7 @@
 
 	<body>
 		<div id="content">
-      Hi {{ user }},
+      Hi {% firstof user.get_full_name user.username %},
       <p>
       {% if last_route %}
       The last route you climbed was a {{ last_route.difficulty }}
