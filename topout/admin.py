@@ -24,7 +24,7 @@ class Completed_RouteAdmin(admin.ModelAdmin):
 
 class WallAdmin(admin.ModelAdmin):
     list_display = ('wall_name', 'gym', 'created')
-    prepopulated_field = {'wall_slug': ('wall_name',)}
+    prepopulated_fields = {'wall_slug': ('wall_name',)}
 
 class GymAdmin(admin.ModelAdmin):
     list_display = ('gym_name', 'gym_address', 'gym_city', 'gym_state',
