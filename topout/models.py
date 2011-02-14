@@ -39,6 +39,7 @@ class Gym(models.Model):
 class Wall(models.Model):
     wall_name = models.CharField(unique=True, max_length=50)
     wall_slug= models.SlugField()
+    wall_height = models.PositiveIntegerField()
     gym = models.ForeignKey(Gym)
     created = models.DateTimeField(editable=False)
     modified = models.DateTimeField(editable=False)
