@@ -63,7 +63,7 @@
 								</div>
 								<div class="item-content">
 									<p>
-									{{ item.climber.username }} sent a {{ item.route.difficulty }} route at 
+									{% firstof item.climber.get_full_name item.climber.username %} sent a {{ item.route.difficulty }} route at 
 									<a href="{{ item.route.gym.get_absolute_url }}">{{ item.route.gym.gym_name }}</a>.
 									</p>
 								</div>
