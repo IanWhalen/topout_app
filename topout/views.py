@@ -43,7 +43,7 @@ def gym_view(request, gym_slug):
         return render_to_response('gym.html', c, context_instance=RequestContext(request))
 
 def wall_view(request, gym_slug, wall_slug):
-    if mobileBrowser(request):
+    if True:
         c = get_context_for_wall_page(request, gym_slug, wall_slug)
         return render_to_response('m/m_wall.html', c, context_instance=RequestContext(request))
     else:
@@ -51,11 +51,11 @@ def wall_view(request, gym_slug, wall_slug):
 
 def add_completed_route_view(request):
     if request.method == 'POST' and request.user.is_authenticated():
-        try:
-            r = Route.objects.get(id=request.REQUEST['route_id'])
-        except:
+        add_completed_route(request)
+        if request.is_ajax():
+            json = simplejson.dumps()
+            return HttpResponse(json, mimetype='application/javascript')
+        else:
             return HttpResponseRedirect(request.REQUEST['next'])
-        add_completed_route(request.user, r)
-        return HttpResponseRedirect(request.REQUEST['next'])
     else:
         return HttpResponseRedirect(reverse('home_view'))

@@ -1,0 +1,110 @@
+{% load global_js %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title>
+  
+    {% block title %} the top out {% endblock %}
+  
+  </title>
+
+  <meta name="description" content="A bouldering app to track your climbing."/>
+  <meta name="keywords" content="bouldering, climbing"/>
+
+  <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/screen.css" media="screen, projection"/>
+  <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/print.css" media="print"/>
+  <!--[if lt IE 8]>
+  <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/ie.css" media="screen, projection"/>
+  <![endif]-->
+  <link rel="stylesheet" type="text/css" href="/site_media/css/new.css" media="all"/>
+
+  <script type="text/javascript" src="/site_media/javascript/jquery-1.4.4.min.js"></script> 
+  {% google_analytics %}
+</head>
+
+<body>
+
+{% block header %}
+
+<div id="header">
+  <div class="container">
+    <div class="span-8 append-6 prepend-top" id="logo"> 
+      <a href="/" class="large logo"><h1>The Top Out</h1></a>
+    </div>  
+    <div class="span-10 prepend-top last">
+      <ul class="prepend-top" id="topNav">
+        <li>
+          {% if user.is_authenticated %}
+            {% firstof user.get_full_name user.username %}
+          {% else %}
+            <a href="{% url auth_login %}">Sign in</a>
+          {% endif %}
+        </li>
+        <li>
+          <a href="">Help</a>
+        </li>
+        <li>
+          <a href="">Settings</a>
+        </li>
+        <li>
+          {% if user.is_authenticated %}
+            <a href="{% url auth_logout %}">Sign Out</a>
+          {% else %}
+            <a href="{% url registration_register %}">Sign Up</a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>      
+  </div>
+  <div class="clear"></div>
+</div>
+
+{% endblock %}
+<!-------------- End div#header -------------->
+
+{% block navBar %}
+
+<div id="navBar">
+  <div class="container">
+  {% if user.is_authenticated %}
+    <div class="span-12 append-12">
+      <ul id="navBarItems">
+        <li><a href="/">Home</a></li>
+        <li><a href="/gyms/brooklyn-boulders/">Gyms</a></li>
+        <li><a href="/">Sessions</a></li>
+        <li><a href="/">Stats</a></li>
+        <li class="last-item"><a href="/">Friends</a></li>
+      </ul>
+    </div>
+  {% endif %}
+  </div>
+</div>
+
+{% endblock %}
+<!-------------- End div#navBar -------------->
+
+{% block content %}{% endblock %}
+
+<div class="clear"></div>
+
+{% block footer %}
+    
+<div id="footer">
+  <div class="container prepend-top">
+    <div class="span-12 append-12">
+      <ul id="navBarItems">
+        <li><a href="/">About</a></li>
+        <li class="last-item"><a href="/">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+<!-------------- End div#footer -------------->
+
+{% userVoice %}
+
+  </body>
+</html>

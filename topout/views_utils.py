@@ -1,6 +1,7 @@
 from models import *
 from django.http import Http404
 from datetime import datetime, timedelta
+from django.utils import simplejson
 import urllib
 
 #####################################################
@@ -108,7 +109,7 @@ def get_wall_from_slugs(gym_slug, wall_slug):
         gym = Gym.objects.get(gym_slug=gym_slug)
         wall = Wall.objects.get(wall_slug=wall_slug)
     except:
-        raise Htp404
+        raise Http404
     return wall
 
 def get_gym_from_slug(gym_slug):
@@ -118,13 +119,16 @@ def get_gym_from_slug(gym_slug):
         raise Http404
     return gym
 
-def add_completed_route(user, route):
+def add_completed_route(request):
     """
     Check age of previous user session.
     If older than 3 hours, create a new session and save both.
     Otherwise, update old session endtime and save both.
     """
+    user = request.user
+    route = Route.objects.get(id=request.REQUEST['route_id'])
     now = datetime.now()
+
     if not Session.objects.filter(user=user):
         new_session_obj = Session(user=user,
                                   start_time=now,
