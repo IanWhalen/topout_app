@@ -183,3 +183,18 @@ padding: 9px;
 }
 
 /* End Gym Page Styling */
+
+/* Start Logout Confirm Styling */
+
+div#logoutConfirm {
+background-color: #F4F4F4;
+border: 1px solid #CCC;
+border-bottom-left-radius: 5px 5px;
+border-bottom-right-radius: 5px 5px;
+border-top-left-radius: 5px 5px;
+border-top-right-radius: 5px 5px;
+margin-bottom: 360px;
+padding: 36px;
+}
+
+/* End Logout Confirm Styling */
