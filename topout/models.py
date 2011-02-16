@@ -33,6 +33,18 @@ class Gym(models.Model):
         self.modified = datetime.today()
         super(Gym, self).save(*args, **kwargs)
 
+    def get_distance_climbed():
+        # TODO
+        pass
+
+    def get_diff_range():
+        # TODO
+        pass
+
+    def get_send_count():
+        # TODO
+        pass
+
     class Admin:
         pass
 
