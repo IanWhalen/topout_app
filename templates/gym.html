@@ -2,62 +2,62 @@
 {% load humanize_timesince %}
 
 {% block content %}
-
-<div class="container prepend-top">
-  
-  <div class="span-16 leftColumn">
-    <div id="gymDetail">
-      <h2>{{ gym.gym_name }}</h2>
-    </div>
+<div id="content">
+  <div class="container prepend-top">
     
-    <div class="routeTable prepend-top" id="gymRouteList">
-      <div class="routeTableHeader">
-        <p class="large bottom">All routes...</p>
+    <div class="span-16 leftColumn">
+      <div id="gymDetail">
+        <h2>{{ gym.gym_name }}</h2>
       </div>
-      <ul>
-        {% for route in route_list %}
-        <li>
-        <div class="span-3">
-          <div id="routeColor">
-            {% if not route.secondary_color %}
-            <div style="background: {{ route.primary_color }}; height: 36px;"></div>
-            {% else %}
-            <div style="float: left; background: {{ route.primary_color }}; height: 36px; width: 50%;"></div>
-            <div style="float: left; background: {{ route.secondary_color }}; height: 36px; width: 50%;"></div>
-            <div class="clear"></div>
-            {% endif %}
+      
+      <div class="routeTable prepend-top" id="gymRouteList">
+        <div class="routeTableHeader">
+          <p class="large bottom">All routes...</p>
+        </div>
+        <ul>
+          {% for route in route_list %}
+          <li>
+          <div class="span-3">
+            <div id="routeColor">
+              {% if not route.secondary_color %}
+              <div style="background: {{ route.primary_color }}; height: 36px;"></div>
+              {% else %}
+              <div style="float: left; background: {{ route.primary_color }}; height: 36px; width: 50%;"></div>
+              <div style="float: left; background: {{ route.secondary_color }}; height: 36px; width: 50%;"></div>
+              <div class="clear"></div>
+              {% endif %}
+            </div>
           </div>
-        </div>
 
-        <div class="span-11" id="routeInfo">
-          <h5>{{ route }}</h5>
-          <p>{{ route.wall }}</p>
-        </div>
+          <div class="span-11" id="routeInfo">
+            <h5>{{ route }}</h5>
+            <p>{{ route.wall }}</p>
+          </div>
 
-        <div class="span-2 last" id="routeDiff">
-          <h3>{{ route.difficulty }}</h3>
-        </div>
+          <div class="span-2 last" id="routeDiff">
+            <h3>{{ route.difficulty }}</h3>
+          </div>
 
-        </li>
-        <div class="clear"></div>
-        {% endfor %}
-      </ul>
+          </li>
+          <div class="clear"></div>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- End div#gymRouteList -->
     </div>
-    <!-- End div#gymRouteList -->
-  </div>
-    <!-- End div.leftColumn -->
+      <!-- End div.leftColumn -->
 
-    <div class="span-8 rightColumn last" id="gymStats">
-      <div id="gymMap">
-        <img src="{{ gym_map }}" />
-      </div>
-      <div id="gymStatsText">
-        <p>{{ gym }} has <b>{{ route_list.count }} bouldering problems</b> ranging from <b>V0 to V11+</b>.
-        In the past 30 days <b>5 climbers</b> have made <b>83 sends</b> for a total of <b>1,320 feet climbed</b>.</p>
-      </div>
-  </div>
-  <!-- End div.rightColumn -->
+      <div class="span-8 rightColumn last" id="gymStats">
+        <div id="gymMap">
+          <img src="{{ gym_map }}" />
+        </div>
+        <div id="gymStatsText">
+          <p>{{ gym }} has <b>{{ route_list.count }} bouldering problems</b> ranging from <b>V0 to V11+</b>.
+          In the past 30 days <b>5 climbers</b> have made <b>83 sends</b> for a total of <b>1,320 feet climbed</b>.</p>
+        </div>
+    </div>
+    <!-- End div.rightColumn -->
 
+  </div>
 </div>
-
 {% endblock %}
