@@ -1,62 +1,58 @@
-{% extends "base.html" %}
+{% extends "new_base.html" %}
 {% load facebook_tags %}
-
-{% block title %} the top out :: signin {% endblock %}
-
-{% block non_header_style %}
-<link rel="stylesheet" type="text/css" href="/site_media/css/login.css"/>
 {% facebook_js %}
+
+{% block title_extra %} :: Sign In{% endblock %}
+
+
+{% block head_extra %}
+<script type="text/javascript" src="/site_media/javascript/signin.js"></script>
 {% endblock %}
 
 {% block content %}
-<div id="container"	>
-<div id="body">
 <div id="content">
-<div id="registrationPage" class="fullPage">
-<div id="regPageHeader">
-<div class="centerColumn">
-  <div id="home-sign-in">
-    <div class="signInOption">
-    {% facebook_button %}
-    <br/>
-    </div>
-
-    <div class="regOptionSeperator">
-      <hr style="float: left;">
-      <p style="float: left;">OR</p>
-      <hr style="float: right;">
-    </div>
+  <div class="container">
     
-    <div class="signInOption">
-    <br/>
-    <form accept-charset="UTF-8" method="post" autocomplete="off" id="login-form" action="/accounts/login/">
-      {% csrf_token %}
-
-        <div class="input-wrapper">
-          <label for="id_username">Username</label>
-          <input id="id_username" size="30" type="text" name="username">
+    <div class="span-12 prepend-6 append-6 prepend-top">
+      <div id="signIn">
+        <div class="signInOption">
+          <p>Sign in now with your Facebook account...</p>
+          {% facebook_button %}
+          <br/>
         </div>
-      
-        <div class="input-wrapper">
-          <span>
-            <label for="id_password">Password</label>
+
+        <hr>
+
+        <div class="signInOption">
+          <p>Or sign in with your username and password...</p>
+
+          <form accept-charset="UTF-8" method="post" autocomplete="off" id="login-form" action="/accounts/login/">
+          {% csrf_token %}
+            <div class="input-wrapper">
+              <label for="id_username">Username</label>
+              <input id="id_username" size="30" type="text" name="username">
+            </div>
+          
+            <div class="input-wrapper">
+              <span>
+                <label for="id_password">Password</label>
+                <div class="clear"></div>
+              </span>
+              <input id="id_password" size="30" type="password" name="password">
+            </div>
+
+            <button type="submit" value="submit">Sign In</button>
             <div class="clear"></div>
-          </span>
-          <input id="id_password" size="30" type="password" name="password">
-        </div>
+          </form>
 
-        <button type="submit" value="submit">Sign In</button>
-        <div class="clear"></div>
-      </form>
-    <div>
-    <p>Forgot your password? <a href="{% url auth_password_reset %}">Reset it</a>!</p>
-    <p>Not a member? <a href="{% url registration_register %}">Sign up</a>!</p>
+          <div class="prepend-top" id="forgotPassword">
+            <p>Forgot your password? <a href="{% url auth_password_reset %}">Reset it</a>!</p>
+            <p>Not a member? <a href="{% url registration_register %}">Sign up</a>!</p>
+          </div>
+
+        </div>
+      </div>
     </div>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  </div>
 </div>
 {% endblock %}

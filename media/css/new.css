@@ -1,5 +1,9 @@
 /* Start Global Styling */
 
+div#content {
+min-height: 540px;
+}
+
 a:link, a:visited {
 color: #474747;
 font-weight: bold;
@@ -184,17 +188,68 @@ padding: 9px;
 
 /* End Gym Page Styling */
 
-/* Start Logout Confirm Styling */
+/* Start Sign In, Sign Up, Logout Styling */
 
-div#logoutConfirm {
+div#logoutConfirm, div#signIn, div#regOptionBox,
+div#reasons {
 background-color: #F4F4F4;
 border: 1px solid #CCC;
 border-bottom-left-radius: 5px 5px;
 border-bottom-right-radius: 5px 5px;
 border-top-left-radius: 5px 5px;
 border-top-right-radius: 5px 5px;
-margin-bottom: 360px;
 padding: 36px;
 }
 
-/* End Logout Confirm Styling */
+form .input-wrapper {
+height: 54px;
+position: relative;
+width: 210px;
+}
+
+form .input-wrapper label {
+color: #888;
+font-size: 1.2em;
+font-weight: normal;
+line-height: 54px;
+margin: -5px 0px 0px 11px;
+position: absolute;
+z-index: 1;
+}
+
+form .input-wrapper input {
+border: 1px solid #C2C2C2;
+border-radius: 5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+font-size: 12px;
+padding: 8px;
+width: 200px;
+}
+
+div.signInOption button, div.regOption button {
+border-radius: 4px 4px;
+-moz-border-radius: 4px 4px;
+-webkit-border-radius: 4px 4px;
+cursor: pointer;
+padding: 10px 15px;
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#BDBDBD), to(#8C8C8C));
+background: -moz-linear-gradient( center top , #BDBDBD 0% , #8C8C8C 100% ) repeat scroll 0 0 transparent;
+border: 1px solid #8C8C8C;
+color: black;
+width: 194px;
+height: 24px;
+line-height: 3px;
+}
+
+div#forgotPassword p, div.signInOption p {
+color: #888;
+font-size: 1.5em;
+margin: 0px;
+}
+
+div#forgotPassword p {
+font-size: 1em;
+}
+
+/* End Sign In, Sign Up, Logout Styling */

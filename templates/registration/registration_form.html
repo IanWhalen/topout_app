@@ -1,87 +1,73 @@
-{% extends "base.html" %}
+{% extends "new_base.html" %}
 {% load facebook_tags %}
 
-{% block title %} the top out :: signup {% endblock %}
-{% block non_header_style %}
-<link rel="stylesheet" type="text/css" href="/site_media/css/registration_form.css"/>
-{% facebook_js %}
+{% block title_extra %} :: Sign Up{% endblock %}
+
+{% block head_extra %}
+
+<script type="text/javascript" src="/site_media/javascript/signin.js"></script>
+
 {% endblock %}
 
 {% block content %}
-<div id="container">
-  <div id="body">
-    <div id="content">
-      <div id="registrationPage" class="fullPage">
-        <div id="regPageHeader">
-          <div class="leftColumn">
-            <div id="regOptionBox">
+<div id="content">
+  <div class="container">
 
-              <div class="regOption" id="facebookReg">
-                <h3>Sign up with your Facebook account:</h2>
-                <br/>
-                {% facebook_button %}
-                <br/>
-              </div>
+    <div class="span-12 prepend-2 prepend-top">
+      <div id="regOptionBox">
 
-              <div class="clear"></div>
-              
-              <div class="regOptionSeperator">
-                <hr style="float: left;">
-                <p style="float: left;">OR</p>
-                <hr style="float: right;">
-                <div class="clear"></div>
-              </div>
+        <div class="regOption" id="facebookReg">
+          <h3>Sign up with your Facebook account...</h2>
+          {% facebook_button %}
+          <br/>
+        </div>
 
-              <div class="clear"></div>
-              
-              <div class="regOption" id="topoutReg">
-              <br/>
-              <h3>Create your own account on the top out.</h3>
-              <br/>
-              <form accept-charset="UTF-8" id="login-form" method="post" autocomplete="off" action=".">
-              {% csrf_token %}
+        <hr>
 
-              <div class="input-wrapper">
-                <label for="username">Username</label>
-                <input id="username" size="30" type="text" name="username">
-              </div>
+        <div class="regOption" id="topoutReg">
+          <br/>
+          <h3>Or create your own account on The Top Out...</h3>
+          <form accept-charset="UTF-8" id="login-form" method="post" autocomplete="off" action=".">
+          {% csrf_token %}
 
-              <div class="input-wrapper">
-                <label for="email">Email Address</label>
-                <input id="email" size="30" type="text" name="email">
-              </div>
+            <div class="input-wrapper">
+              <label for="username">Username</label>
+              <input id="username" size="30" type="text" name="username">
+            </div>
 
-              <div class="input-wrapper">
-                <label for="password1">Password</label>
-                <input id="password1" size="30" type="password" name="password1">
-              </div>
+            <div class="input-wrapper">
+              <label for="email">Email Address</label>
+              <input id="email" size="30" type="text" name="email">
+            </div>
 
-              <div class="input-wrapper">
-                <label for="password2">Confirm Password</label>
-                <input id="password2" size="30" type="password" name="password2">
-              </div>
+            <div class="input-wrapper">
+              <label for="password1">Password</label>
+              <input id="password1" size="30" type="password" name="password1">
+            </div>
 
-        <button type="submit" value="submit"/>Create Account</button>
-        <div class="clear"></div>
-      </form>
+            <div class="input-wrapper">
+              <label for="password2">Confirm Password</label>
+              <input id="password2" size="30" type="password" name="password2">
+            </div>
+
+            <button type="submit" value="submit"/>Create Account</button>
+            <div class="clear"></div>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="rightColumn">
-  <div id="reasons">
-    <h3>Why Should I Register?</h3>
-    <ul>
-      <li>Record routes you've climbed.</li>
-      <li>Find new routes to climb.</li>
-      <li>That's it!  Pretty simple, huh?</li>
-    </ul>
-  </div>
-</div>
+    <div class="span-8 append-2 prepend-top last">
+      <div id="reasons">
+        <h3>What is The Top Out?</h3>
+        <ul>
+          <li>Use your phone to record routes as you climb.</li>
+          <li>Find new routes to climb.</li>
+          <li>That's it!  Pretty simple, huh?</li>
+        </ul>
+      </div>
+    </div>
 
-</div>
-</div>
-</div>
-</div>
+  </div>
 </div>
 {% endblock %}
