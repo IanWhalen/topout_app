@@ -52,7 +52,7 @@ def gym_list_view(request):
 
 def wall_view(request, gym_slug, wall_slug):
     if True:
-        c = get_context_for_wall_page(request, gym_slug, wall_slug)
+        c = get_context_for_wall_page(request, wall_slug)
         return render_to_response('m/m_wall.html', c, context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect(reverse('gym_view', args=[gym_slug]))
@@ -61,8 +61,9 @@ def add_completed_route_view(request):
     if request.method == 'POST' and request.user.is_authenticated():
         add_completed_route(request)
         if request.is_ajax():
-            json = simplejson.dumps()
-            return HttpResponse(json, mimetype='application/javascript')
+            wall_slug = get_wall_slug_from_route_id(request.REQUEST['route_id'])
+            c = get_context_for_wall_page(request, wall_slug)
+            return render_to_response('m/js_route_table.html', c)
         else:
             return HttpResponseRedirect(request.REQUEST['next'])
     else:

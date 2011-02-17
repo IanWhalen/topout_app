@@ -28,8 +28,8 @@ def get_context_for_user_home(request):
          'prev_session': prev_session}
     return c
 
-def get_context_for_wall_page(request, gym_slug, wall_slug):
-    wall = get_wall_from_slugs(gym_slug, wall_slug)
+def get_context_for_wall_page(request, wall_slug):
+    wall = get_wall_from_slug(wall_slug)
     route_list = get_list_for_wall(request.user, wall)
 
     c = {'user': request.user,
@@ -65,7 +65,7 @@ def get_context_for_gym_list_page(request):
 
 mobiles_uas = [
     'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
-    'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
+    'blaz','brew','cell','cldc','cmd-','dang','doco','hipt','inno',
     'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',
     'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',
     'newt','noki','oper','palm','pana','pant','phil','play','port','prox',
@@ -110,13 +110,16 @@ def get_completes_in_prev_session(user):
         completes = None
     return completes
 
-def get_wall_from_slugs(gym_slug, wall_slug):
+def get_wall_from_slug(wall_slug):
     try:
-        gym = Gym.objects.get(gym_slug=gym_slug)
         wall = Wall.objects.get(wall_slug=wall_slug)
     except:
         raise Http404
     return wall
+
+def get_wall_slug_from_route_id(route_id):
+    wall_slug = Wall.objects.get(route=route_id).wall_slug
+    return wall_slug
 
 def get_gym_from_slug(gym_slug):
     try:

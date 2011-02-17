@@ -2,61 +2,78 @@
 {% load humanize_timesince %}
 
 {% block content %}
+
 <div id="content">
-    <div class="" id="routeTable">
-      <ul>
+  <div class="" id="routeTable">
+    <ul>
         
-        <li id="gymName">
-          <a href="{{ wall.gym.get_absolute_url }}"><h3>{{ wall.gym }}</h3></a>
-        </li>
+      <li id="gymName">
+        <a href="{{ wall.gym.get_absolute_url }}"><h3>{{ wall.gym }}</h3></a>
+      </li>
         
-        <li class="wallName" id="wallName">
-          <h4>{{ wall }}</h4>
-        </li>
+      <li class="wallName" id="wallName">
+        <h4>{{ wall }}</h4>
+      </li>
 
-        {% for route in route_list %}
-        <li class="route">
-            <div class="left" id="routeColor">
-              {% if not route.secondary_color %}
-              <div style="background: {{ route.primary_color }}; height: 100%;"></div>
-              {% else %}
-              <div style="background: {{ route.primary_color }}; height: 50%;"></div>
-              <div style="background: {{ route.secondary_color }}; height: 50%;"></div>
-              {% endif %}
-            </div>
-
-          <div class="left" id="routeInfo">
-            <h5>{{ route }}</h5>
-            {% if route.latest_completed_route %}
-            <p><em>{{ route.latest_completed_route|timesince_human }}</em></p>
-            {% endif %}
-          </div>
-
-          <div class="right" id="routeDone">
-            {% if user.is_authenticated %}
-                <form action="/route/complete/" method="post">
-                  {% csrf_token %}
-                  <input type="hidden" name="route_id" value="{{ route.id }}" />
-                  <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                  <input type="submit" value="Done" class="doneButton" />
-                </form>
+      {% for route in route_list %}
+      <li class="route">
+          <div class="left" id="routeColor">
+            {% if not route.secondary_color %}
+            <div style="background: {{ route.primary_color }}; height: 100%;"></div>
             {% else %}
-            <form action="{% url registration_register %}" method="link">
-              <input type="submit" value="Done" class="doneButton"/>
-            </form>
+            <div style="background: {{ route.primary_color }}; height: 50%;"></div>
+            <div style="background: {{ route.secondary_color }}; height: 50%;"></div>
             {% endif %}
           </div>
-          
-          <div class="right" id="routeDiff">
-            <h3><b>{{ route.difficulty }}</b></h3>
-          </div>
 
-          <div class="clear"></div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="clear"></div>
+        <div class="left" id="routeInfo">
+          <h5>{{ route }}</h5>
+          {% if route.latest_completed_route %}
+          <p><em>{{ route.latest_completed_route|timesince_human }}</em></p>
+          {% endif %}
+        </div>
+
+        <div class="right" id="routeDone">
+          <form class="doneForm" action="/route/complete/" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="route_id" value="{{ route.id }}" />
+            <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+            <input type="submit" value="Done" class="doneButton" />
+          </form>
+        </div>
+
+        <div class="right" id="routeDiff">
+          <h3><b>{{ route.difficulty }}</b></h3>
+        </div>
+
+        <div class="clear"></div>
+      </li>
+      {% endfor %}
+    </ul>
   </div>
-  <!-- End div#content -->
-  {% endblock %}
+  <div class="clear"></div>
+</div>
+<!-- End div#content -->
+
+<script>
+$(document).ready(function() {
+  $(".doneForm").submit(function() {
+    var route_id = $(this).find('input[name=route_id]').val()
+    var next = $(this).find('input[name=next]').val()
+    var reqData = {route_id:route_id,next:next}
+
+
+    $.ajax({
+      type: "post",
+      url: "/route/complete/",
+      data: reqData,
+      success: function(data) {
+        $("#routeTable").html(data);
+      }
+    });
+  return false;
+  });
+});
+</script>  
+
+{% endblock %}
