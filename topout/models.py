@@ -45,6 +45,10 @@ class Gym(models.Model):
         # TODO
         pass
 
+    def get_route_count():
+        # TODO
+        pass
+
     class Admin:
         pass
 

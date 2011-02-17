@@ -1,0 +1,45 @@
+{% load global_js %}
+{% load humanize_timesince %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>{% block title %} the top out {% endblock %}</title>
+
+		<meta name="description" content="An app to track your climbing."/>
+		<meta name="keywords" content="bouldering, climbing"/>
+    
+    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/screen.css" media="screen, projection"/>
+    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/print.css" media="print"/>
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/ie.css" media="screen, projection"/>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="/site_media/css/mobile.css" media="screen"/>
+
+    <script type="text/javascript" src="/site_media/javascript/jquery-1.4.4.min.js"></script> 
+
+    {% google_analytics %}
+	</head>
+
+
+	<body>
+
+    <div id="header">
+      <div class="left"><a href="/"><h2>The Top Out</h2></a></div>
+      <div class="right"><p>{% firstof user.get_full_name user.username %}</p></div>
+      <div class="clear"></div>
+    </div>
+    <!-- End div#header -->
+
+    {% block content %}{% endblock content %}
+
+    <div id="footer">
+      <div class="">
+        <div class="">
+          <a href="{% url auth_logout %}">Log Out</a>
+        </div>
+      </div>
+    </div>
+    <!-- End div#footer -->
+
+  </body>

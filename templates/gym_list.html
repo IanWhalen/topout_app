@@ -1,0 +1,48 @@
+{% extends 'new_base.html' %}
+
+{% block content %}
+<div id="content">
+  <div class="container prepend-top">
+
+    <div class="span-24">
+      <div id="gymListIntro">
+        <h2>Find your friendly local climbing gym now</h2>
+      </div>
+
+      <div class="routeTable prepend-top" id="gymList">
+        <div class="routeTableHeader">
+          <p class="large bottom">All gyms</p>
+        </div>
+        <ul>
+
+          {% for gym in gym_list %}
+          <li>
+            <div class="span-6" id="gymLogo">
+              <img />
+            </div>
+
+            <div class="span-6" id="gymName">
+              <a href="{{ gym.get_absolute_url }}"><p>{{ gym }}</p></a>
+            </div>
+
+            <div class="span-2" id="gymState">
+              <p>{{ gym.gym_state }}</p>
+            </div>
+
+            <div class="span-4" id="routeCount">
+              <p>{{ gym.get_route_count }}</p>
+            </div>
+          </li>
+          {% endfor %}
+
+          <li>
+            <p>And more coming soon</p>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

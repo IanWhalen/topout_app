@@ -1,69 +1,31 @@
-{% load global_js %}
-{% load humanize_timesince %}
+{% extends "m_base.html" %}
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-	<head>
-		<title>{% block title %} the top out {% endblock %}</title>
+{% block content %}
+<div id="content">
+  <div class="">
+    <div class="" id="wallTable">    
+      <ul>
 
-		<meta name="description" content="An app to track your climbing."/>
-		<meta name="keywords" content="bouldering, climbing"/>
-    
-    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/screen.css" media="screen, projection"/>
-    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/print.css" media="print"/>
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" type="text/css" href="/site_media/css/blueprint/ie.css" media="screen, projection"/>
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="/site_media/css/mobile.css" media="screen"/>
+        <li id="gymName">
+          <h3>{{ gym }}</h3>
+        </li>
 
-    <script type="text/javascript" src="/site_media/javascript/jquery-1.4.4.min.js"></script> 
+        {% for wall in wall_list %}
+        <li class="wallName">
+          <div class="left">
+            <h4>{{ wall }}</h4>
+          </div>
+          <div class="right">
+            <form action="{{ wall.get_absolute_url }}" method="link">
+              <input type="submit" value=">" class="wallPageButton" />
+            </form>
+          </div>
+          <div class="clear"></div>
+        </li>
+        {% endfor %}
 
-    {% google_analytics %}
-	</head>
-
-
-	<body>
-    <div id="header">
-      <div class="container">
-        <div class="span-4"><h2>The Top Out</h2></div>
-        <div class="span-4 last"><p>{% firstof user.get_full_name user.username %}</p></div>
-        <br/>
-      </div>
-      <div class="clear"></div>
+      </ul>
     </div>
-    <!-- End div#header -->
-
-    <div id="content">
-      <div class="container">
-      <div class="span-8" id="wallTable">    
-        <ul>
-
-          <li id="gymName">
-            <h3>{{ gym }}</h3>
-          </li>
-
-          {% for wall in wall_list %}
-          <li class="wallName">
-            <div class="span-7">
-              <h4>{{ wall }}</h4>
-            </div>
-            <div class="span-1 last">
-              <form action="{{ wall.get_absolute_url }}" method="link">
-                <input type="submit" value=">" class="wallPageButton" />
-              </form>
-            </div>
-            <div class="clear"></div>
-          </li>
-          {% endfor %}
-
-        </ul>
-
-      </div>
-    </div>
-    <div id="footer">
-      <div class="container">
-        <div class="span-8 prepend-top">
-    <a href="{% url auth_logout %}">Log Out</a>
   </div>
 </div>
-  </body>
+{% endblock %}

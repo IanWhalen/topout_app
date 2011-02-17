@@ -1,7 +1,23 @@
 /* Start Mobile Global Styling */
 
+a:link, a:visited {
+color: #474747;
+font-weight: bold;
+text-decoration: none;
+}
+
 div#header {
-background: #E6E6E6;
+background: #86C543;
+border: 1px solid #CCC;
+padding: 10px;
+-moz-border-radius-topright: 5px;
+-webkit-border-top-right-radius: 5px;
+border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-webkit-border-top-left-radius: 5px;
+border-top-left-radius: 5px;
+margin: 6px 3px 0 3px;
+height: 54px;
 }
 
 div#header h2 {
@@ -13,6 +29,10 @@ div#header p {
 float: right;
 margin-bottom: 0px;
 padding: 18px 0px;
+}
+
+div#footer {
+margin: 6px 3px 0 3px;
 }
 
 /* End Mobile Global Styling */
@@ -98,14 +118,29 @@ border: 1px solid #E6E6E6;
 color: #555;
 cursor: pointer;
 font-weight: bold;
-line-height: 1.5;
+line-height: 2;
 text-align: center;
 text-shadow: rgba(0, 0, 0, 0.0976562) 0px -1px 0px;
 background: #E6E6E6;
-text-decoration: none;
-text-transform: capitalize;
-margin: 6px 9px 6px 0px;
+margin: 3px 9px 0px 0px;
 width: 27px;
+}
+
+li#gymName {
+border-left: 1px solid #CCC;
+border-right: 1px solid #CCC;
+padding: 5px;
+margin: 0 3px;
+font-weight: bold;
+text-align: center;
+}
+
+li.wallName {
+border-left: 1px solid #CCC;
+border-right: 1px solid #CCC;
+padding: 5px;
+margin: 0 3px;
+font-weight: bold;
 }
 
 /* End Mobile Gym Page Styling */

@@ -50,6 +50,12 @@ def get_context_for_gym_page(request, gym_slug):
          'climb_count': climb_count}
     return c
 
+def get_context_for_gym_list_page(request):
+    gym_list = get_gym_list()
+
+    c = {'gym_list': gym_list}
+    return c
+
 
 #####################################################
 #                                                   #
@@ -159,6 +165,10 @@ def add_completed_route(request):
 
     comp_route_obj.save()
     return
+
+def get_gym_list():
+    gym_list = Gym.objects.all()
+    return gym_list
 
 def get_lists_for_gym(user, gym):
     wall_list = Wall.objects.filter(gym=gym.id)
