@@ -1,6 +1,5 @@
 {% extends "new_base.html" %}
 {% load facebook_tags %}
-{% facebook_js %}
 
 {% block title_extra %} :: Sign In{% endblock %}
 
@@ -10,6 +9,7 @@
 {% endblock %}
 
 {% block content %}
+{% facebook_js %}
 <div id="content">
   <div class="container">
     
