@@ -4,10 +4,23 @@
 <div id="content">
   <div class="">
     <div class="" id="wallTable">    
-      <ul>
 
-        <li id="gymName">
-          <h3>{{ gym }}</h3>
+      <div id="gymName">
+        <h3>{{ gym }}</h3>
+      </div>
+      <div class="clear"></div>
+      
+      <ul>
+        <li class="wallName">
+          <div class="left">
+            <h4>Incomplete Routes</h4>
+          </div>
+          <div class="right">
+            <form action="/gyms/{{ gym.gym_slug }}/incomplete/" method="link">
+              <input type="submit" value=">" class="wallPageButton" />
+            </form>
+          </div>
+          <div class="clear"></div>
         </li>
 
         {% for wall in wall_list %}

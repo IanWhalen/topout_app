@@ -39,12 +39,31 @@ margin: 6px 3px 0 3px;
 
 /* Start Mobile Wall Page Styling */
 
+div#gymName {
+border-bottom: 1px solid #CCC;
+border-left: 1px solid #CCC;
+border-right: 1px solid #CCC;
+padding: 5px;
+margin: 0 3px;
+font-weight: bold;
+text-align: center;
+}
+
+div#wallName {
+border-bottom: 1px solid #CCC;
+border-left: 1px solid #CCC;
+border-right: 1px solid #CCC;
+background: #CCC;
+padding: 0px 5px;
+margin: 0 3px;
+}
+
 div#routeTable li, div#wallTable li {
 border-bottom: 1px solid #CCC;
 border-left: 1px solid #CCC;
 border-right: 1px solid #CCC;
 list-style: none;
-padding: 5px;
+padding: 3px;
 margin: 0 3px;}
 
 div#routeTable ul, div#wallTable ul {
@@ -55,28 +74,32 @@ padding: 0px;
 div#routeColor {
 background: white;
 border: 1px solid #CCC;
-height: 58px;
+height: 72px;
 padding: 3px;
 margin: 3px 9px 3px 3px;
 width: 24px;
 }
 
+div#routeInfo {
+width: 138px;
+}
+
 div#routeInfo h5 {
 color: #555;
 font-weight: bold;
-margin: 18px 0px 0px 0px;
+margin: 24px 0px 0px 0px;
 }
 
 div#routeInfo p {
 color: #86C543;
-margin: 0px 0px 18px 0px;
+margin: 0px 0px auto 0px;
 }
 
 div#routeDiff h3 {
 color: #888;
 font-weight: bold;
 line-height: 4;
-margin: 0px 9px;
+margin: 7px 9px;
 }
 
 .doneButton {
@@ -85,7 +108,7 @@ border: 1px solid #E6E6E6;
 color: #555;
 cursor: pointer;
 font-weight: bold;
-line-height: 3;
+line-height: 4;
 text-align: center;
 text-shadow: rgba(0, 0, 0, 0.0976562) 0px -1px 0px;
 background: #E6E6E6;
@@ -95,18 +118,22 @@ text-transform: capitalize;
 width: 56px;
 }
 
-li#wallName {
-background: #CCC;
+div#wallName h4 {
+color: #474747;
+font-weight: bold;
+margin-bottom: 0px;
+padding: 6px 0px 6px 2px;
 }
 
 li.wallName h4 {
 color: #474747;
 font-weight: bold;
 margin-bottom: 0px;
-padding: 9px 0px 9px 6px;
+padding: 9px 0px 6px 2px;
 }
 
-li#gymName h3 {
+
+div#gymName h3 {
 margin-bottom: 0px;
 padding: 6px 0px 6px 6px;
 }
@@ -137,7 +164,7 @@ font-weight: bold;
 text-align: center;
 }
 
-li.wallName {
+div.wallName {
 border-left: 1px solid #CCC;
 border-right: 1px solid #CCC;
 padding: 5px;

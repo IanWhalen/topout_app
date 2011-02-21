@@ -1,15 +1,6 @@
 {% load humanize_timesince %}
 
       <ul>
-        
-        <li id="gymName">
-          <a href="{{ wall.gym.get_absolute_url }}"><h3>{{ wall.gym }}</h3></a>
-        </li>
-        
-        <li class="wallName" id="wallName">
-          <h4>{{ wall }}</h4>
-        </li>
-
         {% for route in route_list %}
         <li class="route">
             <div class="left" id="routeColor">
@@ -23,8 +14,12 @@
 
           <div class="left" id="routeInfo">
             <h5>{{ route }}</h5>
-            {% if route.latest_completed_route %}
-            <p><em>{{ route.latest_completed_route|timesince_human }}</em></p>
+            {% if route_list.incompletes %}
+            <p style="color: #AAA"><em>{{ route.wall }}</em></p>
+            {% else %}
+              {% if route.latest_completed_route %}
+              <p><em>{{ route.latest_completed_route|timesince_human }}</em></p>
+              {% endif %}
             {% endif %}
           </div>
 
@@ -35,23 +30,6 @@
               <input type="hidden" name="next" value="{{ request.get_full_path }}" />
               <input type="submit" value="Done" class="doneButton" />
             </form>
-
-            <script>
-              $(document).ready(function() {
-                $(".doneForm").submit(function() {
-                  var route_id = $(".doneform").val("route_id")
-                  
-                  $.ajax({
-                    type: "post",
-                    url: "/route/complete/",
-                    data: route_id,
-                    success: function(data) {
-                      $("#routeTable").html(data);
-                    }
-                  });
-                });
-              });
-            </script>
           </div>
 
           <div class="right" id="routeDiff">

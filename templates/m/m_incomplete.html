@@ -7,11 +7,11 @@
   <div class="" id="routeTableHeader">
         
       <div id="gymName">
-        <a href="{{ wall.gym.get_absolute_url }}"><h3>{{ wall.gym }}</h3></a>
+        <a href="{{ gym.get_absolute_url }}"><h3>{{ gym }}</h3></a>
       </div>
         
       <div class="wallName" id="wallName">
-        <h4>{{ wall }}</h4>
+        <h4>Incomplete Routes</h4>
       </div>
   </div>
 
@@ -30,9 +30,7 @@
 
         <div class="left" id="routeInfo">
           <h5>{{ route }}</h5>
-          {% if route.latest_completed_route %}
-          <p><em>{{ route.latest_completed_route|timesince_human }}</em></p>
-          {% endif %}
+          <p style="color: #AAA"><em>{{ route.wall }}</em></p>
         </div>
 
         <div class="right" id="routeDone">
@@ -63,7 +61,8 @@ $(document).ready(function() {
   $(".doneForm").live(submit, function() {
     var route_id = $(this).find('input[name=route_id]').val()
     var next = $(this).find('input[name=next]').val()
-    var reqData = {route_id:route_id,next:next}
+    var incompletes = true;
+    var reqData = {route_id:route_id,next:next,incompletes:incompletes}
 
     $.ajax({
       type: "post",
